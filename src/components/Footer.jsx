@@ -1,0 +1,75 @@
+import { MapPin, Phone } from 'lucide-react'
+import { LOGO, NAV_LINKS, ADDRESS, PHONE, WHATSAPP_URL } from '../data/images'
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear()
+
+  return (
+    <footer className="bg-navy text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div className="lg:col-span-1">
+            <a href="#home" className="flex items-center gap-3">
+              <img src={LOGO} alt="Techshore Coworking Space" className="h-12 w-12 object-contain" width={48} height={48} />
+              <span className="font-display font-bold text-xl">Techshore</span>
+            </a>
+            <p className="mt-4 text-white/60 text-sm leading-relaxed">
+              Premium coworking spaces in Kukatpally, designed for modern professionals and growing businesses.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-display font-semibold text-lg mb-4">Quick Links</h3>
+            <ul className="space-y-2.5">
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="text-white/60 hover:text-sky-300 transition-colors text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-display font-semibold text-lg mb-4">Address</h3>
+            <div className="flex items-start gap-3 text-white/60 text-sm leading-relaxed">
+              <MapPin size={18} className="shrink-0 mt-0.5 text-sky-300" />
+              <address className="not-italic">
+                {ADDRESS.name}
+                <br />
+                {ADDRESS.lines.join(', ')}
+              </address>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="font-display font-semibold text-lg mb-4">Contact</h3>
+            <a
+              href={`tel:${PHONE.replace(/\s/g, '')}`}
+              className="flex items-center gap-3 text-white/60 hover:text-sky-300 transition-colors text-sm"
+            >
+              <Phone size={18} className="shrink-0 text-sky-300" />
+              {PHONE}
+            </a>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-block text-sm text-sky-300 hover:text-sky-200 transition-colors"
+            >
+              Chat on WhatsApp →
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-12 pt-8 border-t border-white/10 text-center text-white/40 text-sm">
+          © {currentYear} Techshore Coworking Space. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+  )
+}
