@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import { LOGO, NAV_LINKS } from '../data/images'
+import { LOGO, NAV_LINKS, WHATSAPP_URL } from '../data/images'
 import { EASE_SMOOTH, fadeUp } from '../lib/motion'
 
 export default function Navbar() {
@@ -68,8 +68,9 @@ export default function Navbar() {
         </ul>
 
         <a
-          href="#contact"
-          onClick={(e) => { e.preventDefault(); handleNavClick('#contact') }}
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className={`hidden lg:inline-flex btn-primary !py-2.5 !px-5 !text-xs ${scrolled ? '' : '!bg-white !text-royal'}`}
         >
           Book Now
@@ -114,8 +115,9 @@ export default function Navbar() {
               ))}
               <motion.li variants={fadeUp} className="pt-2">
                 <a
-                  href="#contact"
-                  onClick={(e) => { e.preventDefault(); handleNavClick('#contact') }}
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="block text-center btn-primary w-full"
                 >
                   Book Now

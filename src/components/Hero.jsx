@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { MessageCircle, CalendarCheck, Wifi, Clock, MapPin } from 'lucide-react'
-import RippleButton from './RippleButton'
 import { HERO_IMAGE, WHATSAPP_URL } from '../data/images'
 import { stagger, fadeUp, fadeRight } from '../lib/motion'
 
@@ -16,10 +15,6 @@ const heroStagger = {
 }
 
 export default function Hero() {
-  const scrollToContact = () => {
-    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0 hero-bg gpu-layer">
@@ -55,23 +50,23 @@ export default function Hero() {
             variants={fadeUp}
             className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight tracking-tight"
           >
-            Work Smarter at{' '}
             <span className="text-sky-300">Techshore</span>{' '}
-            Coworking Space
+            Coworking Space{' '}
+            <span className="text-sky-300">at JNTU, Kukatpally.</span>
           </motion.h1>
 
           <motion.p
             variants={fadeUp}
             className="mt-6 text-lg sm:text-xl text-white/80 leading-relaxed max-w-2xl"
           >
-            Flexible workspaces designed for startups, freelancers, remote teams, and growing businesses in the heart of Kukatpally.
+            Flexible workspaces designed for startups, freelancers, remote teams, and growing businesses.
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4">
-            <RippleButton className="btn-primary" onClick={scrollToContact}>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
               <CalendarCheck size={18} />
               Book a Workspace
-            </RippleButton>
+            </a>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-secondary">
               <MessageCircle size={18} />
               Chat on WhatsApp

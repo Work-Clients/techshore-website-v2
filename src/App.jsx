@@ -6,7 +6,6 @@ import Spaces from './components/Spaces'
 import Amenities from './components/Amenities'
 import Gallery from './components/Gallery'
 import Location from './components/Location'
-import Contact from './components/Contact'
 import Footer from './components/Footer'
 import FloatingButtons from './components/FloatingButtons'
 import { EASE_SMOOTH } from './lib/motion'
@@ -22,7 +21,6 @@ export default function App() {
         <Amenities />
         <Gallery />
         <Location />
-        <Contact />
       </main>
       <Footer />
       <FloatingButtons />

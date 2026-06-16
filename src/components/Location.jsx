@@ -49,9 +49,9 @@ export default function Location() {
                   <a href={`tel:${PHONE.replace(/\s/g, '')}`} className="mt-2 block text-royal font-medium hover:underline">
                     {PHONE}
                   </a>
-                  <a href="mailto:info@techshore.in" className="mt-1 flex items-center gap-2 text-navy/70 hover:text-royal transition-colors duration-200">
+                  <a href="mailto:contact@techshorecoworking.com" className="mt-1 flex items-center gap-2 text-navy/70 hover:text-royal transition-colors duration-200">
                     <Mail size={16} />
-                    info@techshore.in
+                    contact@techshorecoworking.com
                   </a>
                 </div>
               </div>

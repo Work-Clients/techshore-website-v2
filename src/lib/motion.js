@@ -47,6 +47,30 @@ export const scaleIn = {
   },
 }
 
+export const galleryReveal = {
+  hidden: { opacity: 0, scale: 0.94, y: 24 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: EASE_SMOOTH },
+  },
+}
+
+export const lightboxReveal = {
+  hidden: { opacity: 0, scale: 0.97 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.4, ease: EASE_SMOOTH },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.98,
+    transition: { duration: 0.25, ease: EASE_SMOOTH },
+  },
+}
+
 export const stagger = {
   hidden: {},
   visible: {
