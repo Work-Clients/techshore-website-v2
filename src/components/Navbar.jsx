@@ -38,7 +38,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${
+      className={`fixed top-0 left-0 w-screen max-w-[100vw] z-50 transition-all duration-300 ease-out ${
         scrolled ? 'nav-scrolled' : 'nav-transparent'
       }`}
     >

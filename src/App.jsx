@@ -15,9 +15,9 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user" transition={{ duration: 0.5, ease: EASE_SMOOTH }}>
       <Navbar />
-      <main className="text-text-main">
+      <main className="text-text-main w-full overflow-x-clip">
         <Hero />
-        <div className="relative isolate">
+        <div className="relative isolate overflow-x-clip">
           <SectionGeometry />
           <About />
           <Spaces />

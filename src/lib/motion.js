@@ -8,10 +8,12 @@ export const VIEWPORT = {
   amount: 0.08,
 }
 
-const REVEAL_DURATION = 0.42
+const REVEAL_DURATION = 0.58
+const SPRING_SNAPPY = { type: 'spring', stiffness: 220, damping: 22, mass: 0.85 }
+const SPRING_BOUNCE = { type: 'spring', stiffness: 180, damping: 14, mass: 0.9 }
 
 export const fadeUp = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
@@ -20,7 +22,7 @@ export const fadeUp = {
 }
 
 export const fadeDown = {
-  hidden: { opacity: 0, y: -16 },
+  hidden: { opacity: 0, y: -36 },
   visible: {
     opacity: 1,
     y: 0,
@@ -29,15 +31,16 @@ export const fadeDown = {
 }
 
 export const fadeIn = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 0, scale: 0.92 },
   visible: {
     opacity: 1,
-    transition: { duration: 0.38, ease: EASE_SMOOTH },
+    scale: 1,
+    transition: { duration: 0.5, ease: EASE_SMOOTH },
   },
 }
 
 export const fadeLeft = {
-  hidden: { opacity: 0, x: -20 },
+  hidden: { opacity: 0, x: -48 },
   visible: {
     opacity: 1,
     x: 0,
@@ -46,7 +49,7 @@ export const fadeLeft = {
 }
 
 export const fadeRight = {
-  hidden: { opacity: 0, x: 20 },
+  hidden: { opacity: 0, x: 48 },
   visible: {
     opacity: 1,
     x: 0,
@@ -55,7 +58,7 @@ export const fadeRight = {
 }
 
 export const fadeUpLeft = {
-  hidden: { opacity: 0, x: -18, y: 18 },
+  hidden: { opacity: 0, x: -40, y: 40 },
   visible: {
     opacity: 1,
     x: 0,
@@ -65,7 +68,7 @@ export const fadeUpLeft = {
 }
 
 export const fadeUpRight = {
-  hidden: { opacity: 0, x: 18, y: 18 },
+  hidden: { opacity: 0, x: 40, y: 40 },
   visible: {
     opacity: 1,
     x: 0,
@@ -75,7 +78,7 @@ export const fadeUpRight = {
 }
 
 export const fadeDownLeft = {
-  hidden: { opacity: 0, x: -18, y: -14 },
+  hidden: { opacity: 0, x: -36, y: -32 },
   visible: {
     opacity: 1,
     x: 0,
@@ -85,7 +88,7 @@ export const fadeDownLeft = {
 }
 
 export const fadeDownRight = {
-  hidden: { opacity: 0, x: 18, y: -14 },
+  hidden: { opacity: 0, x: 36, y: -32 },
   visible: {
     opacity: 1,
     x: 0,
@@ -95,70 +98,148 @@ export const fadeDownRight = {
 }
 
 export const scaleIn = {
-  hidden: { opacity: 0, scale: 0.96 },
+  hidden: { opacity: 0, scale: 0.82 },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: REVEAL_DURATION, ease: EASE_SMOOTH },
+    transition: SPRING_SNAPPY,
   },
 }
 
 export const scaleUp = {
-  hidden: { opacity: 0, scale: 0.94, y: 10 },
+  hidden: { opacity: 0, scale: 0.86, y: 28 },
   visible: {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { duration: REVEAL_DURATION, ease: EASE_SMOOTH },
+    transition: SPRING_SNAPPY,
   },
 }
 
 export const rotateIn = {
-  hidden: { opacity: 0, scale: 0.96, rotate: -2 },
+  hidden: { opacity: 0, scale: 0.88, rotate: -10 },
   visible: {
     opacity: 1,
     scale: 1,
     rotate: 0,
-    transition: { duration: REVEAL_DURATION, ease: EASE_SMOOTH },
+    transition: SPRING_SNAPPY,
   },
 }
 
-export const galleryReveal = {
-  hidden: { opacity: 0, scale: 0.97, y: 12 },
+export const popIn = {
+  hidden: { opacity: 0, scale: 0.75, y: 24 },
   visible: {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { duration: 0.45, ease: EASE_SMOOTH },
+    transition: SPRING_BOUNCE,
+  },
+}
+
+export const zoomIn = {
+  hidden: { opacity: 0, scale: 0.7 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.62, ease: EASE_SMOOTH },
+  },
+}
+
+export const swingLeft = {
+  hidden: { opacity: 0, x: -56, rotate: -8 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    rotate: 0,
+    transition: SPRING_SNAPPY,
+  },
+}
+
+export const swingRight = {
+  hidden: { opacity: 0, x: 56, rotate: 8 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    rotate: 0,
+    transition: SPRING_SNAPPY,
+  },
+}
+
+export const riseSpring = {
+  hidden: { opacity: 0, y: 56 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: SPRING_BOUNCE,
+  },
+}
+
+export const rotateInRight = {
+  hidden: { opacity: 0, scale: 0.88, rotate: 10 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    rotate: 0,
+    transition: SPRING_SNAPPY,
+  },
+}
+
+export const slideFarLeft = {
+  hidden: { opacity: 0, x: -72 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.65, ease: EASE_SMOOTH },
+  },
+}
+
+export const slideFarRight = {
+  hidden: { opacity: 0, x: 72 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.65, ease: EASE_SMOOTH },
+  },
+}
+
+export const galleryReveal = {
+  hidden: { opacity: 0, scale: 0.86, y: 32 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: SPRING_SNAPPY,
   },
 }
 
 export const galleryRevealLeft = {
-  hidden: { opacity: 0, scale: 0.97, x: -14 },
+  hidden: { opacity: 0, scale: 0.88, x: -36, rotate: -4 },
   visible: {
     opacity: 1,
     scale: 1,
     x: 0,
-    transition: { duration: 0.45, ease: EASE_SMOOTH },
+    rotate: 0,
+    transition: SPRING_SNAPPY,
   },
 }
 
 export const galleryRevealRight = {
-  hidden: { opacity: 0, scale: 0.97, x: 14 },
+  hidden: { opacity: 0, scale: 0.88, x: 36, rotate: 4 },
   visible: {
     opacity: 1,
     scale: 1,
     x: 0,
-    transition: { duration: 0.45, ease: EASE_SMOOTH },
+    rotate: 0,
+    transition: SPRING_SNAPPY,
   },
 }
 
 export const galleryRevealScale = {
-  hidden: { opacity: 0, scale: 0.94 },
+  hidden: { opacity: 0, scale: 0.78 },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.42, ease: EASE_SMOOTH },
+    transition: SPRING_BOUNCE,
   },
 }
 
@@ -179,7 +260,80 @@ export const lightboxReveal = {
 export const stagger = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.04, delayChildren: 0 },
+    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
+  },
+}
+
+/** Hero — entrance choreography (load-only, not scroll reveals) */
+export const heroStaggerContainer = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.11, delayChildren: 0.18 },
+  },
+}
+
+export const heroHeadlineContainer = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.13, delayChildren: 0.22 },
+  },
+}
+
+export const heroWordReveal = {
+  hidden: { opacity: 0, y: '115%', rotateX: 42, scale: 0.88 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    rotateX: 0,
+    scale: 1,
+    transition: { duration: 0.72, ease: EASE_SMOOTH },
+  },
+}
+
+export const heroAccentLine = {
+  hidden: { scaleX: 0, opacity: 0 },
+  visible: {
+    scaleX: 1,
+    opacity: 1,
+    transition: { duration: 0.85, ease: EASE_SMOOTH, delay: 0.55 },
+  },
+}
+
+export const heroSubheadlineReveal = {
+  hidden: { opacity: 0, y: 28, filter: 'blur(12px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 0.9, ease: EASE_SMOOTH, delay: 0.62 },
+  },
+}
+
+export const heroLocationReveal = {
+  hidden: { opacity: 0, y: 20, scale: 0.88 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { ...SPRING_BOUNCE, delay: 0.82 },
+  },
+}
+
+export const heroCtaContainer = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.14, delayChildren: 0.95 },
+  },
+}
+
+export const heroCtaButtonReveal = {
+  hidden: { opacity: 0, y: 36, scale: 0.86, rotate: -3 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    rotate: 0,
+    transition: SPRING_BOUNCE,
   },
 }
 
@@ -196,6 +350,14 @@ export const REVEAL_VARIANTS = [
   scaleIn,
   scaleUp,
   rotateIn,
+  rotateInRight,
+  popIn,
+  zoomIn,
+  swingLeft,
+  swingRight,
+  riseSpring,
+  slideFarLeft,
+  slideFarRight,
   fadeIn,
 ]
 
@@ -205,8 +367,13 @@ export const GALLERY_REVEALS = [
   galleryRevealRight,
   galleryRevealScale,
   scaleUp,
+  popIn,
+  swingLeft,
+  swingRight,
   fadeUpLeft,
   fadeUpRight,
+  zoomIn,
+  rotateIn,
 ]
 
 export function getRevealVariant(index = 0) {

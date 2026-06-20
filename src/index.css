@@ -36,6 +36,8 @@
 
     @apply bg-bg-main;
 
+    overflow-x: hidden;
+
   }
 
 
@@ -352,6 +354,20 @@
 
 
 
+  .hero-bg-media {
+
+    @apply absolute;
+
+    inset: -8%;
+
+    width: 116%;
+
+    height: 116%;
+
+  }
+
+
+
   .hero-image-crisp {
 
     image-rendering: -webkit-optimize-contrast;
@@ -393,6 +409,30 @@
     font-weight: 800;
 
     letter-spacing: -0.05em;
+
+    perspective: 900px;
+
+    transform-style: preserve-3d;
+
+  }
+
+
+
+  .hero-headline-word {
+
+    @apply inline-block overflow-hidden align-bottom;
+
+    margin-right: 0.18em;
+
+  }
+
+
+
+  .hero-headline-inner {
+
+    @apply inline-block;
+
+    transform-origin: 50% 100%;
 
   }
 

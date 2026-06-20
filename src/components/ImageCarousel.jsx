@@ -41,30 +41,25 @@ export default function ImageCarousel({ images, alt, isActive = false }) {
       onTouchStart={() => setTouching(true)}
       onTouchEnd={() => setTouching(false)}
     >
-      <div
-        className="flex h-full ease-in-out"
-        style={{
-          width: `${images.length * 100}%`,
-          transform: `translateX(-${index * (100 / images.length)}%)`,
-          transition: `transform ${TRANSITION_MS}ms ease-in-out`,
-        }}
-      >
-        {images.map((src, i) => (
-          <div
-            key={src}
-            className="h-full shrink-0"
-            style={{ width: `${100 / images.length}%` }}
-          >
-            <img
-              src={src}
-              alt={i === 0 ? alt : ''}
-              aria-hidden={i !== 0}
-              className="w-full h-full object-cover space-card-image brightness-[1.02] contrast-[1.02]"
-              loading="lazy"
-            />
-          </div>
-        ))}
-      </div>
+      {images.map((src, i) => (
+        <div
+          key={src}
+          className="absolute inset-0 transition-opacity ease-in-out"
+          style={{
+            opacity: i === index ? 1 : 0,
+            transitionDuration: `${TRANSITION_MS}ms`,
+            pointerEvents: i === index ? 'auto' : 'none',
+          }}
+        >
+          <img
+            src={src}
+            alt={i === 0 ? alt : ''}
+            aria-hidden={i !== 0}
+            className="w-full h-full object-cover space-card-image brightness-[1.02] contrast-[1.02]"
+            loading="lazy"
+          />
+        </div>
+      ))}
     </div>
   )
 }
