@@ -1,6 +1,6 @@
 export const LOGO = '/photos/techshore.png'
 
-export const HERO_IMAGE = '/photos/work-floor-and-people.JPG'
+export const HERO_IMAGE = '/photos/open-desk-five.jpeg'
 
 export const ABOUT_IMAGE = '/photos/reception-entrance.jpeg'
 

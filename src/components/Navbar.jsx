@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { LOGO, NAV_LINKS, WHATSAPP_URL } from '../data/images'
 import { EASE_SMOOTH, fadeUp } from '../lib/motion'
+import MagneticLink from './MagneticLink'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -37,16 +38,26 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,padding,box-shadow] duration-300 ease-out ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${
         scrolled
-          ? 'bg-white/95 shadow-lg shadow-navy/5 py-3'
-          : 'bg-transparent py-5'
+          ? 'nav-scrolled'
+          : 'nav-transparent'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between" aria-label="Main navigation">
-        <a href="#home" onClick={(e) => { e.preventDefault(); handleNavClick('#home') }} className="flex items-center gap-2 shrink-0">
-          <img src={LOGO} alt="Techshore Coworking Space logo" className="h-10 w-10 object-contain" width={40} height={40} />
-          <span className={`font-display font-bold text-lg hidden sm:block transition-colors duration-200 ${scrolled ? 'text-navy' : 'text-white'}`}>
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16" aria-label="Main navigation">
+        <a
+          href="#home"
+          onClick={(e) => { e.preventDefault(); handleNavClick('#home') }}
+          className="flex items-center gap-2.5 shrink-0 group"
+        >
+          <img
+            src={LOGO}
+            alt="Techshore Coworking Space logo"
+            className="h-8 w-8 object-contain transition-transform duration-200 group-hover:scale-105"
+            width={32}
+            height={32}
+          />
+          <span className={`font-display font-bold text-base tracking-tight transition-colors duration-200 ${scrolled ? 'text-navy' : 'text-navy hero-text-shadow'}`}>
             Techshore
           </span>
         </a>
@@ -57,9 +68,7 @@ export default function Navbar() {
               <a
                 href={link.href}
                 onClick={(e) => { e.preventDefault(); handleNavClick(link.href) }}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 hover:bg-royal/10 ${
-                  scrolled ? 'text-navy/80 hover:text-royal' : 'text-white/90 hover:text-white'
-                }`}
+                className={`nav-link px-4 py-2 text-sm font-medium ${scrolled ? 'text-navy/80' : 'text-navy/90 hero-text-shadow'}`}
               >
                 {link.label}
               </a>
@@ -67,23 +76,24 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <a
+        <MagneticLink
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className={`hidden lg:inline-flex btn-primary !py-2.5 !px-5 !text-xs ${scrolled ? '' : '!bg-white !text-royal'}`}
+          className="hidden lg:inline-flex btn-nav-glow"
+          strength={0.3}
         >
           Book Now
-        </a>
+        </MagneticLink>
 
         <button
           type="button"
-          className={`lg:hidden p-2 rounded-lg transition-colors duration-200 ${scrolled ? 'text-navy' : 'text-white'}`}
+          className={`lg:hidden p-2 rounded-lg transition-colors duration-200 ${scrolled ? 'text-navy' : 'text-navy'}`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
         >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
 
@@ -94,7 +104,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: EASE_SMOOTH }}
-            className="lg:hidden bg-white border-t border-gray-100 shadow-xl overflow-hidden"
+            className="lg:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-xl overflow-hidden"
           >
             <motion.ul
               className="px-4 py-4 space-y-1"
@@ -107,7 +117,7 @@ export default function Navbar() {
                   <a
                     href={link.href}
                     onClick={(e) => { e.preventDefault(); handleNavClick(link.href) }}
-                    className="block px-4 py-3 rounded-xl text-navy font-medium hover:bg-sky-100 transition-colors duration-200"
+                    className="block px-4 py-3 rounded-xl text-navy font-medium hover:bg-electric/5 transition-colors duration-200"
                   >
                     {link.label}
                   </a>
@@ -118,7 +128,7 @@ export default function Navbar() {
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-center btn-primary w-full"
+                  className="block text-center btn-nav-glow w-full"
                 >
                   Book Now
                 </a>
