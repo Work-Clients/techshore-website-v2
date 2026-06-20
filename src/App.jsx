@@ -8,19 +8,23 @@ import Gallery from './components/Gallery'
 import Location from './components/Location'
 import Footer from './components/Footer'
 import FloatingButtons from './components/FloatingButtons'
+import SectionGeometry from './components/SectionGeometry'
 import { EASE_SMOOTH } from './lib/motion'
 
 export default function App() {
   return (
     <MotionConfig reducedMotion="user" transition={{ duration: 0.5, ease: EASE_SMOOTH }}>
       <Navbar />
-      <main className="bg-bg-main text-text-main">
+      <main className="text-text-main">
         <Hero />
-        <About />
-        <Spaces />
-        <Amenities />
-        <Gallery />
-        <Location />
+        <div className="relative isolate">
+          <SectionGeometry />
+          <About />
+          <Spaces />
+          <Amenities />
+          <Gallery />
+          <Location />
+        </div>
       </main>
       <Footer />
       <FloatingButtons />

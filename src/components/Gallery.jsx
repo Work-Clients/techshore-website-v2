@@ -55,8 +55,8 @@ export default function Gallery() {
   }, [lightboxIndex, close, prev, next])
 
   return (
-    <AnimatedSection id="gallery" className="section-padding" geometry="gallery">
-      <div className="max-w-7xl mx-auto relative z-10">
+    <AnimatedSection id="gallery" className="section-padding">
+      <div className="max-w-7xl mx-auto">
         <FadeIn seed="gallery-header" className="text-center max-w-2xl mx-auto">
           <span className="section-eyebrow">Gallery</span>
           <h2 className="section-title mt-3">Explore Our Workspace</h2>

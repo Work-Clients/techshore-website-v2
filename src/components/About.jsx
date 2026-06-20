@@ -15,8 +15,8 @@ export default function About() {
   const prefersReducedMotion = useReducedMotion()
 
   return (
-    <AnimatedSection id="about" className="section-padding" geometry="about">
-      <div className="max-w-7xl mx-auto relative z-10">
+    <AnimatedSection id="about" className="section-padding">
+      <div className="max-w-7xl mx-auto">
         <FadeIn seed="about-header" className="text-center max-w-2xl mx-auto">
           <span className="section-eyebrow">About Us</span>
           <h2 className="section-title mt-3">Why Choose Techshore?</h2>

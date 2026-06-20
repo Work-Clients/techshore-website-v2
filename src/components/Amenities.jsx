@@ -62,8 +62,8 @@ export default function Amenities() {
   const prefersReducedMotion = useReducedMotion()
 
   return (
-    <AnimatedSection id="amenities" className="section-padding amenities-section" geometry="amenities">
-      <div className="max-w-7xl mx-auto relative z-10">
+    <AnimatedSection id="amenities" className="section-padding">
+      <div className="max-w-7xl mx-auto">
         <FadeIn seed="amenities-header" className="text-center max-w-2xl mx-auto">
           <span className="section-eyebrow">Amenities</span>
           <h2 className="section-title mt-3">Everything You Need to Work Efficiently</h2>
