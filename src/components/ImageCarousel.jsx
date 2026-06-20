@@ -59,7 +59,7 @@ export default function ImageCarousel({ images, alt, isActive = false }) {
               src={src}
               alt={i === 0 ? alt : ''}
               aria-hidden={i !== 0}
-              className="w-full h-full object-cover brightness-110 contrast-105 saturate-110"
+              className="w-full h-full object-cover space-card-image brightness-[1.02] contrast-[1.02]"
               loading="lazy"
             />
           </div>

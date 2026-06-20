@@ -14,7 +14,7 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user" transition={{ duration: 0.5, ease: EASE_SMOOTH }}>
       <Navbar />
-      <main>
+      <main className="text-white/90">
         <Hero />
         <About />
         <Spaces />

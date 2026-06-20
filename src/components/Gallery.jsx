@@ -55,26 +55,17 @@ export default function Gallery() {
   }, [lightboxIndex, close, prev, next])
 
   return (
-    <AnimatedSection id="gallery" className="section-padding bg-background relative overflow-hidden">
-      <div
-        className="absolute inset-0 pointer-events-none opacity-50"
-        aria-hidden="true"
-        style={{
-          background:
-            'radial-gradient(ellipse 60% 50% at 10% 20%, rgba(107, 125, 61, 0.08) 0%, transparent 55%), radial-gradient(ellipse 50% 40% at 90% 80%, rgba(167, 122, 83, 0.06) 0%, transparent 50%)',
-        }}
-      />
-
-      <div className="max-w-7xl mx-auto relative">
+    <AnimatedSection id="gallery" className="section-padding">
+      <div className="max-w-7xl mx-auto">
         <FadeIn seed="gallery-header" className="text-center max-w-2xl mx-auto">
-          <span className="text-primary font-semibold text-sm tracking-wider uppercase">Gallery</span>
-          <h2 className="section-title mt-2">Explore Our Workspace</h2>
+          <span className="section-eyebrow">Gallery</span>
+          <h2 className="section-title mt-3">Explore Our Workspace</h2>
           <p className="section-subtitle mx-auto">
             Take a virtual tour of our modern facilities and vibrant community spaces.
           </p>
         </FadeIn>
 
-        <div className="grid grid-flow-dense grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[minmax(140px,auto)] sm:auto-rows-[minmax(150px,1fr)] lg:auto-rows-[minmax(165px,1fr)] gap-3 sm:gap-3.5 lg:gap-4 mt-12 sm:mt-16 lg:mt-20">
+        <div className="grid grid-flow-dense grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[minmax(140px,auto)] sm:auto-rows-[minmax(150px,1fr)] lg:auto-rows-[minmax(165px,1fr)] gap-3 sm:gap-3.5 lg:gap-4 mt-16 sm:mt-20">
           {GALLERY_IMAGES.map((image, index) => {
             const layout = BENTO_LAYOUT[index] ?? BENTO_LAYOUT[1]
 
@@ -87,7 +78,7 @@ export default function Gallery() {
                 viewport={VIEWPORT}
                 variants={getGalleryReveal(index)}
                 onClick={() => setLightboxIndex(index)}
-                className={`group relative col-span-1 row-span-1 ${layout.span} ${layout.aspect} min-h-[200px] sm:min-h-0 rounded-[18px] overflow-hidden bg-surface ring-1 ring-border/50 shadow-[0_2px_8px_rgba(30,35,40,0.04)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(30,35,40,0.08)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2`}
+                className={`group relative col-span-1 row-span-1 ${layout.span} ${layout.aspect} min-h-[200px] sm:min-h-0 rounded-2xl overflow-hidden bg-bg-card border border-border/80 shadow-card transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-2 hover:shadow-card-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 focus-visible:ring-offset-bg-main`}
                 aria-label={`View ${image.alt}`}
               >
                 <img
@@ -99,7 +90,7 @@ export default function Gallery() {
                 />
 
                 <div
-                  className="absolute inset-0 bg-gradient-to-t from-heading/60 via-heading/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 bg-gradient-to-t from-primary-navy/50 via-primary-navy/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   aria-hidden="true"
                 />
 
@@ -127,7 +118,7 @@ export default function Gallery() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25, ease: EASE_SMOOTH }}
-            className="fixed inset-0 z-[100] bg-heading/95 flex items-center justify-center px-5 sm:px-10 py-16 sm:py-20"
+            className="fixed inset-0 z-[100] bg-primary-navy/95 flex items-center justify-center px-5 sm:px-10 py-16 sm:py-20"
             onClick={close}
             role="dialog"
             aria-modal="true"

@@ -39,12 +39,10 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${
-        scrolled
-          ? 'nav-scrolled'
-          : 'nav-transparent'
+        scrolled ? 'nav-scrolled' : 'nav-transparent'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16" aria-label="Main navigation">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 lg:h-[4.5rem]" aria-label="Main navigation">
         <a
           href="#home"
           onClick={(e) => { e.preventDefault(); handleNavClick('#home') }}
@@ -57,7 +55,7 @@ export default function Navbar() {
             width={32}
             height={32}
           />
-          <span className="font-display font-bold text-base tracking-tight text-heading transition-colors duration-200">
+          <span className="font-display font-bold text-base tracking-tight text-white transition-colors duration-200">
             Techshore
           </span>
         </a>
@@ -68,7 +66,7 @@ export default function Navbar() {
               <a
                 href={link.href}
                 onClick={(e) => { e.preventDefault(); handleNavClick(link.href) }}
-                className="nav-link px-4 py-2 text-sm font-medium text-body"
+                className="nav-link px-4 py-2 text-sm font-medium"
               >
                 {link.label}
               </a>
@@ -80,7 +78,7 @@ export default function Navbar() {
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden lg:inline-flex btn-nav-glow"
+          className="hidden lg:inline-flex btn-nav"
           strength={0.3}
         >
           Book Now
@@ -88,7 +86,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="lg:hidden p-2 rounded-lg text-heading transition-colors duration-200"
+          className="lg:hidden p-2 rounded-lg text-white transition-colors duration-200"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
@@ -104,7 +102,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: EASE_SMOOTH }}
-            className="lg:hidden bg-surface/95 backdrop-blur-xl border-t border-border shadow-xl overflow-hidden"
+            className="lg:hidden bg-primary-navy/95 backdrop-blur-xl border-t border-white/10 shadow-xl overflow-hidden"
           >
             <motion.ul
               className="px-4 py-4 space-y-1"
@@ -117,7 +115,7 @@ export default function Navbar() {
                   <a
                     href={link.href}
                     onClick={(e) => { e.preventDefault(); handleNavClick(link.href) }}
-                    className="block px-4 py-3 rounded-xl text-heading font-medium hover:bg-primary/5 transition-colors duration-200"
+                    className="block px-4 py-3 rounded-xl text-white font-medium hover:bg-white/10 transition-colors duration-200"
                   >
                     {link.label}
                   </a>
@@ -128,7 +126,7 @@ export default function Navbar() {
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-center btn-nav-glow w-full"
+                  className="block text-center btn-nav w-full"
                 >
                   Book Now
                 </a>

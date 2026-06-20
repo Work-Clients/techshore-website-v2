@@ -15,35 +15,35 @@ export default function About() {
   const prefersReducedMotion = useReducedMotion()
 
   return (
-    <AnimatedSection id="about" className="section-padding bg-background relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-72 h-72 bg-primary-50 rounded-full blur-3xl opacity-60 pointer-events-none" aria-hidden="true" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+    <AnimatedSection id="about" className="section-padding relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-72 h-72 bg-accent-gold/5 rounded-full blur-3xl opacity-60 pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
 
       <div className="max-w-7xl mx-auto relative">
         <FadeIn seed="about-header" className="text-center max-w-2xl mx-auto">
-          <span className="text-primary font-semibold text-sm tracking-wider uppercase">About Us</span>
-          <h2 className="section-title mt-2">Why Choose Techshore?</h2>
+          <span className="section-eyebrow">About Us</span>
+          <h2 className="section-title mt-3">Why Choose Techshore?</h2>
         </FadeIn>
 
-        <FadeIn seed="about-image" className="mt-12">
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+        <FadeIn seed="about-image" className="mt-12 sm:mt-16">
+          <div className="relative rounded-4xl overflow-hidden shadow-premium">
             <img
               src={ABOUT_IMAGE}
               alt="Techshore reception area with branding"
               className="w-full h-auto block"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-heading/20 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary-navy/20 to-transparent pointer-events-none" aria-hidden="true" />
           </div>
         </FadeIn>
 
-        <FadeIn seed="about-text" className="mt-10 max-w-3xl mx-auto text-center">
-          <p className="text-body text-lg leading-relaxed">
+        <FadeIn seed="about-text" className="mt-10 sm:mt-12 max-w-3xl mx-auto text-center">
+          <p className="text-white/65 text-lg leading-relaxed">
             Techshore Coworking Space offers modern and productive work environments with excellent connectivity, premium amenities, and flexible workspace options tailored to professionals, startups, and businesses.
           </p>
         </FadeIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-10 sm:mt-12 max-w-4xl mx-auto">
           {stats.map((stat, index) => {
             const Icon = stat.icon
             return (
@@ -55,14 +55,14 @@ export default function About() {
                 viewport={VIEWPORT}
                 variants={getRevealVariant(index + 2)}
               >
-                <div className="inline-flex p-3 rounded-2xl bg-primary-50 text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors duration-200">
+                <div className="inline-flex p-3 rounded-2xl bg-accent-gold/15 text-accent-gold mb-4 group-hover:bg-accent-gold group-hover:text-primary-navy transition-colors duration-300">
                   <Icon size={24} />
                 </div>
-                <div className="font-display text-3xl font-bold text-heading">
+                <div className="font-display text-3xl font-bold text-text-main">
                   {stat.value}
-                  <span className="text-primary ps-1">{stat.suffix}</span>
+                  <span className="text-accent-gold ps-1">{stat.suffix}</span>
                 </div>
-                <p className="mt-2 text-sm text-body/80 font-medium">{stat.label}</p>
+                <p className="mt-2 text-sm text-muted font-medium">{stat.label}</p>
               </motion.div>
             )
           })}

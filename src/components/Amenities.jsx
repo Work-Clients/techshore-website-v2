@@ -25,9 +25,6 @@ const amenityGroups = [
   {
     title: 'Comfort & Convenience',
     description: 'Everyday essentials for a seamless workday',
-    accent: 'from-primary via-primary-200 to-accent',
-    iconGradient: 'from-primary to-accent',
-    glow: 'bg-primary/20',
     items: [
       { icon: Coffee, label: 'Café / Refreshment Area' },
       { icon: Droplets, label: 'Drinking Water Facility' },
@@ -40,9 +37,6 @@ const amenityGroups = [
   {
     title: 'Security & Support',
     description: 'Peace of mind with dedicated on-site assistance',
-    accent: 'from-heading via-primary to-accent',
-    iconGradient: 'from-heading to-primary',
-    glow: 'bg-heading/15',
     items: [
       { icon: Cctv, label: 'CCTV Surveillance' },
       { icon: ShieldCheck, label: 'Secure Access' },
@@ -53,9 +47,6 @@ const amenityGroups = [
   {
     title: 'Business-Friendly Features',
     description: 'Tools and flexibility to grow your business',
-    accent: 'from-accent via-primary to-primary-hover',
-    iconGradient: 'from-accent to-primary',
-    glow: 'bg-accent/20',
     items: [
       { icon: MapPin, label: 'Prime Location' },
       { icon: Building2, label: 'Business Registration Address' },
@@ -71,27 +62,17 @@ export default function Amenities() {
   const prefersReducedMotion = useReducedMotion()
 
   return (
-    <AnimatedSection id="amenities" className="section-padding amenities-section relative overflow-hidden">
-      <div className="amenities-mesh pointer-events-none" aria-hidden="true" />
-      <div
-        className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/15 rounded-full blur-[100px] pointer-events-none animate-float-slow"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-1/4 -right-24 w-80 h-80 bg-accent/10 rounded-full blur-[90px] pointer-events-none animate-float-slow-delayed"
-        aria-hidden="true"
-      />
-
-      <div className="max-w-7xl mx-auto relative">
+    <AnimatedSection id="amenities" className="section-padding amenities-section">
+      <div className="max-w-7xl mx-auto">
         <FadeIn seed="amenities-header" className="text-center max-w-2xl mx-auto">
-          <span className="text-primary font-semibold text-sm tracking-wider uppercase">Amenities</span>
-          <h2 className="section-title mt-2">Everything You Need to Work Efficiently</h2>
+          <span className="section-eyebrow">Amenities</span>
+          <h2 className="section-title mt-3">Everything You Need to Work Efficiently</h2>
           <p className="section-subtitle mx-auto">
             Thoughtfully designed facilities so you can focus on what matters most.
           </p>
         </FadeIn>
 
-        <div className="grid lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12 mt-12 sm:mt-16 lg:mt-20">
+        <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 mt-16 sm:mt-20">
           {amenityGroups.map((group, index) => (
             <motion.div
               key={group.title}
@@ -99,43 +80,22 @@ export default function Amenities() {
               whileInView={prefersReducedMotion ? undefined : 'visible'}
               viewport={VIEWPORT}
               variants={getRevealVariant(index + 3)}
-              className="group/card relative"
             >
-              <div
-                className={`absolute -inset-px rounded-[20px] bg-gradient-to-b ${group.accent} opacity-0 blur-xl transition-opacity duration-500 group-hover/card:opacity-40`}
-                aria-hidden="true"
-              />
-              <div
-                className={`absolute -inset-3 rounded-[28px] ${group.glow} blur-2xl opacity-0 transition-opacity duration-500 group-hover/card:opacity-60`}
-                aria-hidden="true"
-              />
-
-              <article className="relative flex flex-col h-full rounded-[18px] border border-border bg-surface/90 backdrop-blur-xl p-8 sm:p-9 lg:p-10 shadow-card transition-[transform,box-shadow,border-color] duration-300 ease-out group-hover/card:-translate-y-1.5 group-hover/card:border-border group-hover/card:shadow-card-hover">
-                <div
-                  className={`absolute inset-x-0 top-0 h-[3px] rounded-t-[18px] bg-gradient-to-r ${group.accent} opacity-90`}
-                  aria-hidden="true"
-                />
-                <div
-                  className={`absolute inset-x-6 top-0 h-8 bg-gradient-to-b ${group.accent} opacity-[0.07] blur-md rounded-b-full`}
-                  aria-hidden="true"
-                />
-
-                <header className="relative pb-6 mb-7 border-b border-border/70">
-                  <h3 className="font-display text-xl sm:text-2xl font-bold text-heading tracking-tight leading-tight">
+              <article className="flex flex-col h-full rounded-4xl border border-border/80 bg-bg-card p-8 sm:p-9 shadow-card transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-2 hover:shadow-card-hover">
+                <header className="pb-6 mb-6 border-b border-border/60">
+                  <h3 className="font-display text-xl sm:text-2xl font-bold text-text-main tracking-tight leading-tight">
                     {group.title}
                   </h3>
-                  <p className="mt-2 text-sm text-body/80 leading-relaxed">{group.description}</p>
+                  <p className="mt-2 text-sm text-muted leading-relaxed">{group.description}</p>
                 </header>
 
-                <ul className="relative space-y-5">
+                <ul className="space-y-4">
                   {group.items.map(({ icon: Icon, label }) => (
-                    <li key={label} className="flex items-start gap-4 group/item">
-                      <div
-                        className={`shrink-0 p-2.5 rounded-xl bg-gradient-to-br ${group.iconGradient} text-white shadow-[0_4px_12px_rgba(107,125,61,0.2)] ring-1 ring-white/20 transition-transform duration-300 ease-out group-hover/item:scale-110 group-hover/item:-rotate-3`}
-                      >
-                        <Icon size={20} strokeWidth={2} />
+                    <li key={label} className="flex items-start gap-3.5 group/item">
+                      <div className="shrink-0 p-2 rounded-lg bg-accent-gold/15 text-accent-gold transition-colors duration-200 group-hover/item:bg-accent-gold group-hover/item:text-primary-navy">
+                        <Icon size={18} strokeWidth={2} />
                       </div>
-                      <span className="text-sm font-medium text-body leading-relaxed pt-1.5 group-hover/item:text-heading/90 transition-colors duration-200">
+                      <span className="text-sm font-medium text-muted leading-relaxed pt-0.5 group-hover/item:text-text-main transition-colors duration-200">
                         {label}
                       </span>
                     </li>

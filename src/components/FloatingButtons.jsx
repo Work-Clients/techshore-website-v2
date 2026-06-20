@@ -18,7 +18,7 @@ export default function FloatingButtons() {
         href={WHATSAPP_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-2 pl-4 pr-5 py-3.5 rounded-full bg-primary hover:bg-primary-hover text-white font-semibold text-sm shadow-lg hover:shadow-xl hover:scale-105 transition-[transform,box-shadow,background-color] duration-200 gpu-layer"
+        className="flex items-center gap-2 pl-4 pr-5 py-3.5 rounded-full bg-accent-gold hover:bg-accent-gold/90 text-primary-navy font-semibold text-sm shadow-lg hover:shadow-xl hover:scale-105 transition-[transform,box-shadow,background-color] duration-300 gpu-layer"
         aria-label="Book now"
       >
         <CalendarCheck size={20} />

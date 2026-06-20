@@ -14,17 +14,17 @@ export default function Spaces() {
   const prefersReducedMotion = useReducedMotion()
 
   return (
-    <AnimatedSection id="spaces" className="section-padding bg-surface">
+    <AnimatedSection id="spaces" className="section-padding">
       <div className="max-w-7xl mx-auto">
         <FadeIn seed="spaces-header" className="text-center max-w-2xl mx-auto">
-          <span className="text-primary font-semibold text-sm tracking-wider uppercase">Workspace Offerings</span>
-          <h2 className="section-title mt-2">Choose Your Ideal Workspace</h2>
+          <span className="section-eyebrow">Workspace Offerings</span>
+          <h2 className="section-title mt-3">Choose Your Ideal Workspace</h2>
           <p className="section-subtitle mx-auto">
             From solo professionals to growing teams, find the perfect setup for how you work.
           </p>
         </FadeIn>
 
-        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mt-12 sm:mt-16">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mt-16 sm:mt-20">
           {WORKSPACE_CARDS.map((card) => {
             const Icon = iconMap[card.icon]
             const isActive = activeCard === card.title
@@ -40,35 +40,30 @@ export default function Spaces() {
                 onMouseLeave={() => setActiveCard(null)}
                 onTouchStart={() => setActiveCard(card.title)}
                 onTouchEnd={() => setActiveCard(null)}
-                className={`group flex flex-col rounded-3xl border-2 p-6 sm:p-8 transition-all duration-300 ${
-                  isActive
-                    ? 'border-primary/30 bg-surface shadow-card-hover -translate-y-1'
-                    : 'border-border bg-gradient-to-br from-primary-50 to-background shadow-card'
-                }`}
+                className="group flex flex-col rounded-4xl border border-border/80 bg-bg-card p-6 sm:p-8 shadow-premium transition-all duration-300 hover:-translate-y-2 hover:shadow-premium-hover"
               >
-                <div className="text-center">
+                <div className="flex items-start gap-4">
                   <div
-                    className={`inline-flex p-3 rounded-2xl mb-4 transition-colors duration-300 ${
-                      isActive ? 'bg-primary text-white' : 'bg-surface/90 text-primary'
+                    className={`shrink-0 p-2.5 rounded-xl transition-colors duration-300 ${
+                      isActive ? 'bg-accent-gold text-primary-navy' : 'bg-accent-gold/15 text-accent-gold'
                     }`}
                   >
-                    <Icon size={22} strokeWidth={2} />
+                    <Icon size={20} strokeWidth={2} />
                   </div>
-                  <h3 className="font-display text-xl sm:text-2xl font-bold text-heading tracking-tight">
-                    {card.title}
-                  </h3>
-                  <div
-                    className={`mx-auto mt-3 h-0.5 rounded-full bg-gradient-to-r from-primary to-accent transition-all duration-500 ${
-                      isActive ? 'w-16' : 'w-10'
-                    }`}
-                  />
-                  <p className="mt-4 text-body text-sm sm:text-base leading-relaxed">
-                    {card.description}
-                  </p>
+                  <div>
+                    <h3 className="font-display text-xl sm:text-2xl font-bold text-text-main tracking-tight">
+                      {card.title}
+                    </h3>
+                    <p className="mt-3 text-muted text-sm sm:text-base leading-relaxed">
+                      {card.description}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="relative mt-6 aspect-[4/3] rounded-xl overflow-hidden ring-1 ring-border/60">
-                  <ImageCarousel images={card.images} alt={card.title} isActive={isActive} />
+                <div className="relative mt-6 aspect-[4/3] rounded-2xl overflow-hidden border border-border/80">
+                  <div className="absolute inset-0 overflow-hidden">
+                    <ImageCarousel images={card.images} alt={card.title} isActive={isActive} />
+                  </div>
                 </div>
               </motion.article>
             )
