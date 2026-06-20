@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { LOGO, NAV_LINKS, WHATSAPP_URL } from '../data/images'
-import { EASE_SMOOTH, fadeUp } from '../lib/motion'
+import { EASE_SMOOTH, getRevealVariantByKey } from '../lib/motion'
 import MagneticLink from './MagneticLink'
 
 export default function Navbar() {
@@ -57,7 +57,7 @@ export default function Navbar() {
             width={32}
             height={32}
           />
-          <span className={`font-display font-bold text-base tracking-tight transition-colors duration-200 ${scrolled ? 'text-navy' : 'text-navy hero-text-shadow'}`}>
+          <span className="font-display font-bold text-base tracking-tight text-heading transition-colors duration-200">
             Techshore
           </span>
         </a>
@@ -68,7 +68,7 @@ export default function Navbar() {
               <a
                 href={link.href}
                 onClick={(e) => { e.preventDefault(); handleNavClick(link.href) }}
-                className={`nav-link px-4 py-2 text-sm font-medium ${scrolled ? 'text-navy/80' : 'text-navy/90 hero-text-shadow'}`}
+                className="nav-link px-4 py-2 text-sm font-medium text-body"
               >
                 {link.label}
               </a>
@@ -88,7 +88,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className={`lg:hidden p-2 rounded-lg transition-colors duration-200 ${scrolled ? 'text-navy' : 'text-navy'}`}
+          className="lg:hidden p-2 rounded-lg text-heading transition-colors duration-200"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
@@ -104,7 +104,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: EASE_SMOOTH }}
-            className="lg:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-xl overflow-hidden"
+            className="lg:hidden bg-surface/95 backdrop-blur-xl border-t border-border shadow-xl overflow-hidden"
           >
             <motion.ul
               className="px-4 py-4 space-y-1"
@@ -113,17 +113,17 @@ export default function Navbar() {
               animate="visible"
             >
               {NAV_LINKS.map((link) => (
-                <motion.li key={link.href} variants={fadeUp}>
+                <motion.li key={link.href} variants={getRevealVariantByKey(link.label)}>
                   <a
                     href={link.href}
                     onClick={(e) => { e.preventDefault(); handleNavClick(link.href) }}
-                    className="block px-4 py-3 rounded-xl text-navy font-medium hover:bg-electric/5 transition-colors duration-200"
+                    className="block px-4 py-3 rounded-xl text-heading font-medium hover:bg-primary/5 transition-colors duration-200"
                   >
                     {link.label}
                   </a>
                 </motion.li>
               ))}
-              <motion.li variants={fadeUp} className="pt-2">
+              <motion.li variants={getRevealVariantByKey('book-now')} className="pt-2">
                 <a
                   href={WHATSAPP_URL}
                   target="_blank"

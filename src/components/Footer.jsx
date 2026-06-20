@@ -5,7 +5,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-navy text-white">
+    <footer className="bg-heading text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="lg:col-span-1">
@@ -25,7 +25,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-white/60 hover:text-sky-300 transition-colors text-sm"
+                    className="text-white/60 hover:text-accent transition-colors text-sm"
                   >
                     {link.label}
                   </a>
@@ -37,7 +37,7 @@ export default function Footer() {
           <div>
             <h3 className="font-display font-semibold text-lg mb-4">Address</h3>
             <div className="flex items-start gap-3 text-white/60 text-sm leading-relaxed">
-              <MapPin size={18} className="shrink-0 mt-0.5 text-sky-300" />
+              <MapPin size={18} className="shrink-0 mt-0.5 text-accent" />
               <address className="not-italic">
                 {ADDRESS.name}
                 <br />
@@ -50,16 +50,16 @@ export default function Footer() {
             <h3 className="font-display font-semibold text-lg mb-4">Contact</h3>
             <a
               href={`tel:${PHONE.replace(/\s/g, '')}`}
-              className="flex items-center gap-3 text-white/60 hover:text-sky-300 transition-colors text-sm"
+              className="flex items-center gap-3 text-white/60 hover:text-accent transition-colors text-sm"
             >
-              <Phone size={18} className="shrink-0 text-sky-300" />
+              <Phone size={18} className="shrink-0 text-accent" />
               {PHONE}
             </a>
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 inline-block text-sm text-sky-300 hover:text-sky-200 transition-colors"
+              className="mt-3 inline-block text-sm text-accent hover:text-accent-light transition-colors"
             >
               Chat on WhatsApp →
             </a>
