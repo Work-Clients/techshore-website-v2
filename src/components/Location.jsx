@@ -6,8 +6,8 @@ import { fadeLeft, fadeRight } from '../lib/motion'
 
 export default function Location() {
   return (
-    <AnimatedSection id="location" className="section-padding">
-      <div className="max-w-7xl mx-auto">
+    <AnimatedSection id="location" className="section-padding" geometry="location">
+      <div className="max-w-7xl mx-auto relative z-10">
         <FadeIn seed="location-header" className="text-center max-w-2xl mx-auto">
           <span className="section-eyebrow">Location</span>
           <h2 className="section-title mt-3">Find Us</h2>

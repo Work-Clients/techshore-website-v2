@@ -14,8 +14,8 @@ export default function Spaces() {
   const prefersReducedMotion = useReducedMotion()
 
   return (
-    <AnimatedSection id="spaces" className="section-padding">
-      <div className="max-w-7xl mx-auto">
+    <AnimatedSection id="spaces" className="section-padding" geometry="spaces">
+      <div className="max-w-7xl mx-auto relative z-10">
         <FadeIn seed="spaces-header" className="text-center max-w-2xl mx-auto">
           <span className="section-eyebrow">Workspace Offerings</span>
           <h2 className="section-title mt-3">Choose Your Ideal Workspace</h2>
