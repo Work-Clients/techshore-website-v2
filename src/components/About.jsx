@@ -16,8 +16,8 @@ export default function About() {
 
   return (
     <AnimatedSection id="about" className="section-padding relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-72 h-72 bg-accent-gold/5 rounded-full blur-3xl opacity-60 pointer-events-none" aria-hidden="true" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+      <div className="absolute top-0 right-0 w-72 h-72 bg-accent-gold/10 rounded-full blur-3xl opacity-60 pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-navy/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
 
       <div className="max-w-7xl mx-auto relative">
         <FadeIn seed="about-header" className="text-center max-w-2xl mx-auto">
@@ -38,7 +38,7 @@ export default function About() {
         </FadeIn>
 
         <FadeIn seed="about-text" className="mt-10 sm:mt-12 max-w-3xl mx-auto text-center">
-          <p className="text-white/65 text-lg leading-relaxed">
+          <p className="text-muted text-lg leading-relaxed">
             Techshore Coworking Space offers modern and productive work environments with excellent connectivity, premium amenities, and flexible workspace options tailored to professionals, startups, and businesses.
           </p>
         </FadeIn>

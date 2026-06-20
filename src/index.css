@@ -16,13 +16,13 @@
 
     --color-accent-gold-dark: #9a7b3c;
 
-    --color-bg-main: #0a1630;
+    --color-bg-main: #f8f9fa;
 
-    --color-bg-card: #ffffff;
+    --color-bg-card: #f1ede4;
 
     --color-text-main: #1e293b;
 
-    --color-border: #dce3ed;
+    --color-border: #e2e0d9;
 
     --color-muted: #556275;
 
@@ -70,13 +70,7 @@
 
   body {
 
-    @apply font-body text-white/90 antialiased overflow-x-hidden;
-
-    background-color: #0a1630;
-
-    background-image: linear-gradient(180deg, #0c1a38 0%, #0a1630 50%, #081428 100%);
-
-    background-attachment: fixed;
+    @apply font-body text-text-main antialiased overflow-x-hidden bg-bg-main;
 
   }
 
@@ -84,7 +78,7 @@
 
   ::selection {
 
-    @apply bg-accent-gold/40 text-white;
+    @apply bg-accent-gold/30 text-primary-navy;
 
   }
 
@@ -104,7 +98,9 @@
 
   .section-eyebrow {
 
-    @apply text-accent-gold font-semibold text-xs tracking-[0.12em] uppercase;
+    @apply font-semibold text-xs tracking-[0.12em] uppercase;
+
+    color: var(--color-accent-gold-dark);
 
   }
 
@@ -112,7 +108,7 @@
 
   .section-title {
 
-    @apply font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white tracking-tight leading-[1.15];
+    @apply font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-text-main tracking-tight leading-[1.15];
 
   }
 
@@ -120,7 +116,7 @@
 
   .section-subtitle {
 
-    @apply mt-5 text-lg text-white/65 max-w-2xl leading-relaxed;
+    @apply mt-5 text-lg text-muted max-w-2xl leading-relaxed;
 
   }
 
@@ -272,13 +268,13 @@
 
     @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full
 
-      bg-transparent text-white font-semibold text-sm tracking-wide
+      bg-transparent text-primary-navy font-semibold text-sm tracking-wide
 
-      border border-white/25 transition-[background-color,color,transform,border-color] duration-300 ease-out
+      border border-border transition-[background-color,color,transform,border-color] duration-300 ease-out
 
-      hover:bg-white/10 hover:text-white hover:border-white/40 hover:-translate-y-0.5
+      hover:bg-primary-navy hover:text-white hover:border-primary-navy hover:-translate-y-0.5
 
-      focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-main;
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-navy focus-visible:ring-offset-2 focus-visible:ring-offset-bg-main;
 
   }
 
