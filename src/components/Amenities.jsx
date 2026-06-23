@@ -66,7 +66,7 @@ export default function Amenities() {
       <div className="max-w-7xl mx-auto">
         <FadeIn seed="amenities-header" className="text-center max-w-2xl mx-auto">
           <span className="section-eyebrow">Amenities</span>
-          <h2 className="section-title mt-3">Everything You Need to Work Efficiently</h2>
+          <h2 className="section-title mt-3 !leading-[1.4]">Everything You Need to Work Efficiently</h2>
           <p className="section-subtitle mx-auto">
             Thoughtfully designed facilities so you can focus on what matters most.
           </p>

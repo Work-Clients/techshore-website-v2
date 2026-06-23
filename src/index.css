@@ -292,6 +292,14 @@
 
 
 
+  .audience-card {
+
+    @apply card-base p-6 sm:p-8 h-full text-center flex flex-col items-center;
+
+  }
+
+
+
   .card-premium {
 
     @apply bg-bg-card rounded-4xl border border-border/80 shadow-premium transition-[transform,box-shadow] duration-300 ease-out

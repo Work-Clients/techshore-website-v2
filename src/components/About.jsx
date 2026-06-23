@@ -1,14 +1,35 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { Clock, Wifi, MapPin } from 'lucide-react'
+import { Rocket, Laptop, Users, Palette } from 'lucide-react'
 import AnimatedSection from './AnimatedSection'
 import FadeIn from './FadeIn'
 import { ABOUT_IMAGE } from '../data/images'
 import { getRevealVariant, VIEWPORT } from '../lib/motion'
 
-const stats = [
-  { icon: Clock, label: 'Access', value: '24', suffix: '/ 7' },
-  { icon: Wifi, label: 'High-Speed WiFi', value: '1', suffix: 'Gbps' },
-  { icon: MapPin, label: 'Prime Kukatpally Location', value: '500m', suffix: 'to Metro' },
+const audiences = [
+  {
+    icon: Rocket,
+    title: 'For Startups and Entrepreneurs',
+    description:
+      'Scale without heavy overhead — flexible plans, a collaborative atmosphere, and the infrastructure early-stage teams need to move fast.',
+  },
+  {
+    icon: Laptop,
+    title: 'For Remote Employees and Professionals',
+    description:
+      'Leave the home desk behind for a professional setting with reliable WiFi, fewer distractions, and a routine that keeps you focused.',
+  },
+  {
+    icon: Users,
+    title: 'For Small Businesses and Teams',
+    description:
+      'Private cabins and meeting rooms give your team a dedicated base to collaborate, host clients, and work with clarity.',
+  },
+  {
+    icon: Palette,
+    title: 'For Digital Creators and Designers',
+    description:
+      'A calm, well-lit space with the connectivity and privacy to create, edit, and deliver — without working in isolation.',
+  },
 ]
 
 export default function About() {
@@ -40,27 +61,28 @@ export default function About() {
           </p>
         </FadeIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-10 sm:mt-12 max-w-4xl mx-auto">
-          {stats.map((stat, index) => {
-            const Icon = stat.icon
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 mt-12 sm:mt-14 max-w-5xl mx-auto">
+          {audiences.map((audience, index) => {
+            const Icon = audience.icon
             return (
-              <motion.div
-                key={stat.label}
-                className="card-base p-6 text-center group"
+              <motion.article
+                key={audience.title}
+                className="audience-card group"
                 initial={prefersReducedMotion ? false : 'hidden'}
                 whileInView={prefersReducedMotion ? undefined : 'visible'}
                 viewport={VIEWPORT}
                 variants={getRevealVariant(index + 2)}
               >
-                <div className="inline-flex p-3 rounded-2xl bg-accent-gold/15 text-accent-gold mb-4 group-hover:bg-accent-gold group-hover:text-primary-navy transition-colors duration-300">
-                  <Icon size={24} />
+                <div className="inline-flex p-3.5 rounded-2xl bg-accent-gold/15 text-accent-gold mb-5 transition-colors duration-300 group-hover:bg-accent-gold group-hover:text-primary-navy">
+                  <Icon size={26} strokeWidth={2} aria-hidden="true" />
                 </div>
-                <div className="font-display text-3xl font-bold text-text-main">
-                  {stat.value}
-                  <span className="text-accent-gold ps-1">{stat.suffix}</span>
-                </div>
-                <p className="mt-2 text-sm text-muted font-medium">{stat.label}</p>
-              </motion.div>
+                <h3 className="font-display text-lg sm:text-xl font-bold text-text-main tracking-tight leading-snug">
+                  {audience.title}
+                </h3>
+                <p className="mt-3 text-sm sm:text-base text-muted leading-relaxed">
+                  {audience.description}
+                </p>
+              </motion.article>
             )
           })}
         </div>
