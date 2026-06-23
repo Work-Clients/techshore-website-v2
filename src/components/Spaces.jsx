@@ -43,11 +43,7 @@ export default function Spaces() {
                 className="group flex flex-col rounded-4xl border border-border/80 bg-bg-card p-6 sm:p-8 shadow-premium transition-all duration-300 hover:-translate-y-2 hover:shadow-premium-hover"
               >
                 <div className="flex items-start gap-4">
-                  <div
-                    className={`shrink-0 p-2.5 rounded-xl transition-colors duration-300 ${
-                      isActive ? 'bg-accent-gold text-primary-navy' : 'bg-accent-gold/15 text-accent-gold'
-                    }`}
-                  >
+                  <div className="icon-badge p-2.5 rounded-xl">
                     <Icon size={20} strokeWidth={2} />
                   </div>
                   <div>

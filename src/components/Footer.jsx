@@ -37,7 +37,9 @@ export default function Footer() {
           <div>
             <h3 className="font-display font-semibold text-lg mb-4">Address</h3>
             <div className="flex items-start gap-3 text-white/55 text-sm leading-relaxed">
-              <MapPin size={18} className="shrink-0 mt-0.5 text-accent-gold" />
+              <span className="icon-badge icon-badge-sm shrink-0 mt-0.5">
+                <MapPin size={16} />
+              </span>
               <address className="not-italic">
                 {ADDRESS.name}
                 <br />
@@ -52,7 +54,9 @@ export default function Footer() {
               href={`tel:${PHONE.replace(/\s/g, '')}`}
               className="flex items-center gap-3 text-white/55 hover:text-accent-gold transition-colors text-sm"
             >
-              <Phone size={18} className="shrink-0 text-accent-gold" />
+              <span className="icon-badge icon-badge-sm shrink-0">
+                <Phone size={16} />
+              </span>
               {PHONE}
             </a>
             <a

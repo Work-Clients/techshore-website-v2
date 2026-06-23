@@ -5,6 +5,13 @@ export default {
     extend: {
       colors: {
         'primary-navy': '#0a1630',
+        icon: {
+          DEFAULT: '#0a1630',
+          soft: 'rgba(10, 22, 48, 0.92)',
+          muted: '#4d6182',
+          bg: 'rgba(10, 22, 48, 0.09)',
+          'on-dark': '#9eb0cc',
+        },
         'accent-gold': {
           DEFAULT: '#dfb15b',
           dark: '#9a7b3c',

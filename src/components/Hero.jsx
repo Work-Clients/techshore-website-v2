@@ -98,7 +98,9 @@ export default function Hero() {
           animate="visible"
           className="hero-location mt-5 sm:mt-6"
         >
-          <MapPin size={16} className="shrink-0 text-white/50" aria-hidden="true" />
+          <span className="icon-badge icon-badge-sm shrink-0" aria-hidden="true">
+            <MapPin size={14} />
+          </span>
           At JNTU Metro, Kukatpally, Hyderabad
         </motion.p>
 

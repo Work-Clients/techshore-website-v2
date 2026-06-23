@@ -81,7 +81,7 @@ export default function Amenities() {
               viewport={VIEWPORT}
               variants={getRevealVariant(index + 3)}
             >
-              <article className="flex flex-col h-full rounded-4xl border border-border/80 bg-bg-card p-8 sm:p-9 shadow-card transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-2 hover:shadow-card-hover">
+              <article className="group flex flex-col h-full rounded-4xl border border-border/80 bg-bg-card p-8 sm:p-9 shadow-card transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-2 hover:shadow-card-hover">
                 <header className="pb-6 mb-6 border-b border-border/60">
                   <h3 className="font-display text-xl sm:text-2xl font-bold text-text-main tracking-tight leading-tight">
                     {group.title}
@@ -91,11 +91,11 @@ export default function Amenities() {
 
                 <ul className="space-y-4">
                   {group.items.map(({ icon: Icon, label }) => (
-                    <li key={label} className="flex items-start gap-3.5 group/item">
-                      <div className="shrink-0 p-2 rounded-lg bg-accent-gold/15 text-accent-gold transition-colors duration-200 group-hover/item:bg-accent-gold group-hover/item:text-primary-navy">
+                    <li key={label} className="flex items-start gap-3.5">
+                      <div className="icon-badge p-2 rounded-lg">
                         <Icon size={18} strokeWidth={2} />
                       </div>
-                      <span className="text-sm font-medium text-muted leading-relaxed pt-0.5 group-hover/item:text-text-main transition-colors duration-200">
+                      <span className="text-sm font-medium text-muted leading-relaxed pt-0.5">
                         {label}
                       </span>
                     </li>

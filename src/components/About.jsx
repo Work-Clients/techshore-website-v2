@@ -73,7 +73,7 @@ export default function About() {
                 viewport={VIEWPORT}
                 variants={getRevealVariant(index + 2)}
               >
-                <div className="inline-flex p-3.5 rounded-2xl bg-accent-gold/15 text-accent-gold mb-5 transition-colors duration-300 group-hover:bg-accent-gold group-hover:text-primary-navy">
+                <div className="icon-badge p-3.5 rounded-2xl mb-5">
                   <Icon size={26} strokeWidth={2} aria-hidden="true" />
                 </div>
                 <h3 className="font-display text-lg sm:text-xl font-bold text-text-main tracking-tight leading-snug">

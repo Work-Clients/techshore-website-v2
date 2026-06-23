@@ -12,6 +12,16 @@
 
     --color-primary-navy: #0a1630;
 
+    --color-icon: #0a1630;
+
+    --color-icon-soft: rgba(10, 22, 48, 0.92);
+
+    --color-icon-muted: #4d6182;
+
+    --color-icon-bg: rgba(10, 22, 48, 0.09);
+
+    --color-icon-on-dark: #9eb0cc;
+
     --color-accent-gold: #dfb15b;
 
     --color-accent-gold-dark: #9a7b3c;
@@ -216,7 +226,13 @@
 
 
 
-  .nav-transparent,
+  .nav-transparent {
+
+    background: #0a1630;
+
+  }
+
+
 
   .nav-scrolled {
 
@@ -227,12 +243,6 @@
     -webkit-backdrop-filter: blur(18px);
 
     @apply border-b border-white/10;
-
-  }
-
-
-
-  .nav-scrolled {
 
     box-shadow: 0 1px 12px rgba(10, 22, 48, 0.25);
 
@@ -516,7 +526,35 @@
 
   .feature-bullet-icon {
 
-    @apply shrink-0 p-2.5 rounded-xl bg-accent-gold/15 text-accent-gold;
+    @apply shrink-0 p-2.5 rounded-xl text-white;
+
+    background-color: var(--color-primary-navy);
+
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+  }
+
+
+
+  .icon-badge {
+
+    @apply inline-flex items-center justify-center shrink-0 text-white;
+
+    background-color: var(--color-primary-navy);
+
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+  }
+
+
+
+  .icon-badge-sm {
+
+    @apply inline-flex items-center justify-center shrink-0 text-white p-1.5 rounded-lg;
+
+    background-color: var(--color-primary-navy);
+
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
 
   }
 

@@ -29,11 +29,12 @@ export const WORKSPACE_CARDS = [
     title: 'Open Desks',
     description: 'Flexible seating for freelancers and remote workers who thrive in a vibrant community setting.',
     images: [
-      '/photos/open-desk-space-four.jpg',
       '/photos/open-desk-five.jpeg',
-      '/photos/open-desk-space-with-people-front-view.jpg',
-      '/photos/open-desk-space-three.jpg',
-      '/photos/open-desk-space-two.jpg',
+      '/photos/open-desk-space-four.jpg',
+      '/photos/open-desks-area.jpg'
+      // '/photos/open-desk-space-with-people-front-view.jpg',
+      // '/photos/open-desk-space-three.jpg',
+      // '/photos/open-desk-space-two.jpg',
     ],
     icon: 'Users',
   },
@@ -41,7 +42,8 @@ export const WORKSPACE_CARDS = [
     title: 'Meeting Cabins',
     description: 'Private meeting cabins for client calls, team huddles, and focused discussions.',
     images: [
-      '/photos/conference-room-side-view.JPG',
+      '/photos/meeting-room-lit.jpeg',
+      // '/photos/conference-room-side-view.JPG',
       '/photos/conference-room-with-person.JPG',
       '/photos/cabins.JPG',
     ],

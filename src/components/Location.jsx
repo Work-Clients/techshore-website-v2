@@ -20,7 +20,7 @@ export default function Location() {
           <FadeIn variants={fadeLeft} className="lg:col-span-2 space-y-5">
             <div className="card-base p-6">
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-xl bg-accent-gold/15 text-accent-gold shrink-0">
+                <div className="icon-badge p-3 rounded-xl">
                   <MapPin size={22} />
                 </div>
                 <div>
@@ -41,7 +41,7 @@ export default function Location() {
 
             <div className="card-base p-6">
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-xl bg-accent-gold/15 text-accent-gold shrink-0">
+                <div className="icon-badge p-3 rounded-xl">
                   <Phone size={22} />
                 </div>
                 <div>
@@ -49,8 +49,10 @@ export default function Location() {
                   <a href={`tel:${PHONE.replace(/\s/g, '')}`} className="mt-2 block text-text-main font-medium hover:text-accent-gold transition-colors">
                     {PHONE}
                   </a>
-                  <a href="mailto:contact@techshorecoworking.com" className="mt-1 flex items-center gap-2 text-muted hover:text-[var(--color-accent-gold-dark)] transition-colors duration-200">
-                    <Mail size={16} />
+                  <a href="mailto:contact@techshorecoworking.com" className="mt-1 flex items-center gap-2.5 text-muted hover:text-primary-navy transition-colors duration-200">
+                    <span className="icon-badge icon-badge-sm shrink-0">
+                      <Mail size={14} />
+                    </span>
                     contact@techshorecoworking.com
                   </a>
                 </div>
