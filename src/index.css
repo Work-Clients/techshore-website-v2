@@ -400,6 +400,28 @@
 
 
 
+  .hero-logo-shell {
+
+    @apply flex items-center justify-center origin-top;
+
+    margin-bottom: calc(clamp(9rem, 22vw, 14rem) * -0.56 + 0.25rem);
+
+  }
+
+
+
+  .hero-logo-img {
+
+    @apply object-contain;
+
+    width: clamp(9rem, 22vw, 14rem);
+
+    height: clamp(9rem, 22vw, 14rem);
+
+  }
+
+
+
   .hero-headline {
 
     @apply font-display text-white leading-[1.1] tracking-tight;

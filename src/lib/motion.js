@@ -264,77 +264,121 @@ export const stagger = {
   },
 }
 
-/** Hero — entrance choreography (load-only, not scroll reveals) */
-export const heroStaggerContainer = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.11, delayChildren: 0.18 },
-  },
+/** Hero — strict sequential entrance (load-only) */
+export const HERO_TIMING = {
+  logoAppear: 0.6,
+  logoPause: 0.2,
+  logoShrink: 0.7,
+  wordStagger: 0.09,
+  wordDuration: 0.5,
+  sectionDuration: 0.45,
+  sectionGap: 0.06,
+  ctaStagger: 0.1,
 }
 
-export const heroHeadlineContainer = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.13, delayChildren: 0.22 },
+const HERO_WORD_COUNT = 3
+
+export function getHeroLogoEnd(reduced = false) {
+  if (reduced) return 0
+  const { logoAppear, logoPause, logoShrink } = HERO_TIMING
+  return logoAppear + logoPause + logoShrink
+}
+
+export function getHeroTitleStart(reduced = false) {
+  return getHeroLogoEnd(reduced)
+}
+
+export function getHeroTitleEnd(reduced = false) {
+  return getHeroTitleStart(reduced) + (HERO_WORD_COUNT - 1) * HERO_TIMING.wordStagger + HERO_TIMING.wordDuration
+}
+
+export function getHeroAccentDelay(reduced = false) {
+  return getHeroTitleEnd(reduced) + HERO_TIMING.sectionGap
+}
+
+export function getHeroSubheadlineDelay(reduced = false) {
+  return getHeroAccentDelay(reduced) + HERO_TIMING.sectionDuration + HERO_TIMING.sectionGap
+}
+
+export function getHeroLocationDelay(reduced = false) {
+  return getHeroSubheadlineDelay(reduced) + HERO_TIMING.sectionDuration + HERO_TIMING.sectionGap
+}
+
+export function getHeroCtaDelay(reduced = false) {
+  return getHeroLocationDelay(reduced) + HERO_TIMING.sectionDuration + HERO_TIMING.sectionGap
+}
+
+export function getHeroCtaButtonDelay(index = 0, reduced = false) {
+  return getHeroCtaDelay(reduced) + index * HERO_TIMING.ctaStagger
+}
+
+export const heroLogoReveal = {
+  hidden: { opacity: 0, scale: 0.78 },
+  large: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: HERO_TIMING.logoAppear, ease: EASE_SMOOTH },
+  },
+  small: {
+    opacity: 1,
+    scale: 0.38,
+    transition: { duration: HERO_TIMING.logoShrink, ease: EASE_SMOOTH, delay: HERO_TIMING.logoPause },
   },
 }
 
 export const heroWordReveal = {
   hidden: { opacity: 0, y: '115%', rotateX: 42, scale: 0.88 },
-  visible: {
+  visible: ({ index = 0, reduced = false } = {}) => ({
     opacity: 1,
     y: 0,
     rotateX: 0,
     scale: 1,
-    transition: { duration: 0.72, ease: EASE_SMOOTH },
-  },
+    transition: {
+      duration: HERO_TIMING.wordDuration,
+      ease: EASE_SMOOTH,
+      delay: getHeroTitleStart(reduced) + index * HERO_TIMING.wordStagger,
+    },
+  }),
 }
 
 export const heroAccentLine = {
   hidden: { scaleX: 0, opacity: 0 },
-  visible: {
+  visible: (reduced = false) => ({
     scaleX: 1,
     opacity: 1,
-    transition: { duration: 0.85, ease: EASE_SMOOTH, delay: 0.55 },
-  },
+    transition: { duration: HERO_TIMING.sectionDuration, ease: EASE_SMOOTH, delay: getHeroAccentDelay(reduced) },
+  }),
 }
 
 export const heroSubheadlineReveal = {
   hidden: { opacity: 0, y: 28, filter: 'blur(12px)' },
-  visible: {
+  visible: (reduced = false) => ({
     opacity: 1,
     y: 0,
     filter: 'blur(0px)',
-    transition: { duration: 0.9, ease: EASE_SMOOTH, delay: 0.62 },
-  },
+    transition: { duration: HERO_TIMING.sectionDuration, ease: EASE_SMOOTH, delay: getHeroSubheadlineDelay(reduced) },
+  }),
 }
 
 export const heroLocationReveal = {
   hidden: { opacity: 0, y: 20, scale: 0.88 },
-  visible: {
+  visible: (reduced = false) => ({
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { ...SPRING_BOUNCE, delay: 0.82 },
-  },
-}
-
-export const heroCtaContainer = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.14, delayChildren: 0.95 },
-  },
+    transition: { ...SPRING_BOUNCE, delay: getHeroLocationDelay(reduced) },
+  }),
 }
 
 export const heroCtaButtonReveal = {
   hidden: { opacity: 0, y: 36, scale: 0.86, rotate: -3 },
-  visible: {
+  visible: ({ index = 0, reduced = false } = {}) => ({
     opacity: 1,
     y: 0,
     scale: 1,
     rotate: 0,
-    transition: SPRING_BOUNCE,
-  },
+    transition: { ...SPRING_BOUNCE, delay: getHeroCtaButtonDelay(index, reduced) },
+  }),
 }
 
 /** Pool of reveal animations cycled by index or key */

@@ -1,14 +1,12 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { MessageCircle, CalendarCheck, MapPin } from 'lucide-react'
-import { WHATSAPP_URL } from '../data/images'
+import { LOGO, WHATSAPP_URL } from '../data/images'
 import {
-  heroStaggerContainer,
-  heroHeadlineContainer,
+  heroLogoReveal,
   heroWordReveal,
   heroAccentLine,
   heroSubheadlineReveal,
   heroLocationReveal,
-  heroCtaContainer,
   heroCtaButtonReveal,
 } from '../lib/motion'
 import MagneticLink from './MagneticLink'
@@ -18,10 +16,16 @@ const HEADLINE_LINES = [
   ['Coworking', 'Space'],
 ]
 
-function HeroHeadlineWord({ word }) {
+function HeroHeadlineWord({ word, index, reduced }) {
   return (
     <span className="hero-headline-word">
-      <motion.span variants={heroWordReveal} className="hero-headline-inner">
+      <motion.span
+        variants={heroWordReveal}
+        custom={{ index, reduced }}
+        initial="hidden"
+        animate="visible"
+        className="hero-headline-inner"
+      >
         {word}
       </motion.span>
     </span>
@@ -36,42 +40,76 @@ export default function Hero() {
       id="home"
       className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 min-w-0 min-h-[100dvh] min-h-screen flex items-center overflow-hidden bg-[#0a1630]"
     >
-      <motion.div
-        className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 sm:pt-36 sm:pb-28 text-center"
-        variants={heroStaggerContainer}
-        initial={prefersReducedMotion ? false : 'hidden'}
-        animate={prefersReducedMotion ? undefined : 'visible'}
-      >
-        <motion.h1 variants={heroHeadlineContainer} className="hero-headline">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 sm:pt-36 sm:pb-28 text-center">
+        <motion.div
+          className="hero-logo-shell"
+          variants={heroLogoReveal}
+          initial={prefersReducedMotion ? 'small' : 'hidden'}
+          animate={prefersReducedMotion ? 'small' : ['large', 'small']}
+        >
+          <img
+            src={LOGO}
+            alt="Techshore Coworking Space"
+            className="hero-logo-img"
+            width={224}
+            height={224}
+            fetchPriority="high"
+          />
+        </motion.div>
+
+        <h1 className="hero-headline">
           {HEADLINE_LINES.map((line, lineIndex) => (
             <span key={lineIndex} className="hero-headline-line">
-              {line.map((word) => (
-                <HeroHeadlineWord key={word} word={word} />
+              {line.map((word, wordIndex) => (
+                <HeroHeadlineWord
+                  key={word}
+                  word={word}
+                  reduced={prefersReducedMotion}
+                  index={HEADLINE_LINES.slice(0, lineIndex).reduce((sum, l) => sum + l.length, 0) + wordIndex}
+                />
               ))}
             </span>
           ))}
-        </motion.h1>
+        </h1>
 
         <motion.div
           variants={heroAccentLine}
+          custom={prefersReducedMotion}
+          initial="hidden"
+          animate="visible"
           className="mx-auto mt-5 h-1 w-24 origin-left rounded-full bg-gradient-to-r from-accent-gold to-accent-gold/30 sm:origin-center"
           aria-hidden="true"
         />
 
-        <motion.p variants={heroSubheadlineReveal} className="hero-subheadline mt-6 sm:mt-8">
+        <motion.p
+          variants={heroSubheadlineReveal}
+          custom={prefersReducedMotion}
+          initial="hidden"
+          animate="visible"
+          className="hero-subheadline mt-6 sm:mt-8"
+        >
           Premium Workspaces for Modern Professionals
         </motion.p>
 
-        <motion.p variants={heroLocationReveal} className="hero-location mt-5 sm:mt-6">
+        <motion.p
+          variants={heroLocationReveal}
+          custom={prefersReducedMotion}
+          initial="hidden"
+          animate="visible"
+          className="hero-location mt-5 sm:mt-6"
+        >
           <MapPin size={16} className="shrink-0 text-white/50" aria-hidden="true" />
           At JNTU Metro, Kukatpally, Hyderabad
         </motion.p>
 
-        <motion.div
-          variants={heroCtaContainer}
-          className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center"
-        >
-          <motion.div variants={heroCtaButtonReveal} className="w-full sm:w-auto">
+        <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+          <motion.div
+            variants={heroCtaButtonReveal}
+            custom={{ index: 0, reduced: prefersReducedMotion }}
+            initial="hidden"
+            animate="visible"
+            className="w-full sm:w-auto"
+          >
             <MagneticLink
               href={WHATSAPP_URL}
               target="_blank"
@@ -83,7 +121,13 @@ export default function Hero() {
               Book Workspace
             </MagneticLink>
           </motion.div>
-          <motion.div variants={heroCtaButtonReveal} className="w-full sm:w-auto">
+          <motion.div
+            variants={heroCtaButtonReveal}
+            custom={{ index: 1, reduced: prefersReducedMotion }}
+            initial="hidden"
+            animate="visible"
+            className="w-full sm:w-auto"
+          >
             <MagneticLink
               href={WHATSAPP_URL}
               target="_blank"
@@ -95,8 +139,8 @@ export default function Hero() {
               Chat on WhatsApp
             </MagneticLink>
           </motion.div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   )
 }
