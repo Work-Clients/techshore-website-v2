@@ -402,9 +402,9 @@
 
   .hero-headline {
 
-    @apply font-display text-white leading-[1.02] tracking-tight;
+    @apply font-display text-white leading-[1.1] tracking-tight;
 
-    font-size: clamp(4rem, 8vw, 7rem);
+    font-size: clamp(2.75rem, 5.5vw, 4.75rem);
 
     font-weight: 800;
 
@@ -418,11 +418,23 @@
 
 
 
+  .hero-headline-line {
+
+    @apply block;
+
+  }
+
+
+
   .hero-headline-word {
 
     @apply inline-block overflow-hidden align-bottom;
 
     margin-right: 0.18em;
+
+    padding-right: 0.08em;
+
+    padding-bottom: 0.14em;
 
   }
 

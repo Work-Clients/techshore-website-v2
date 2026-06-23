@@ -3,7 +3,7 @@ import { WHATSAPP_URL } from '../data/images'
 
 export default function FloatingButtons() {
   return (
-    <div className="fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] right-4 sm:right-6 z-40 flex flex-col gap-3" aria-label="Quick actions">
+    <div className="fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] right-4 sm:right-6 z-40 flex w-max flex-col items-end gap-3" aria-label="Quick actions">
       <a
         href={WHATSAPP_URL}
         target="_blank"

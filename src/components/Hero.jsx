@@ -1,7 +1,6 @@
-import { useRef } from 'react'
-import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { MessageCircle, CalendarCheck, MapPin } from 'lucide-react'
-import { HERO_IMAGE, WHATSAPP_URL } from '../data/images'
+import { WHATSAPP_URL } from '../data/images'
 import {
   heroStaggerContainer,
   heroHeadlineContainer,
@@ -14,52 +13,29 @@ import {
 } from '../lib/motion'
 import MagneticLink from './MagneticLink'
 
-const HEADLINE = 'Techshore Coworking Space'
-const HEADLINE_WORDS = HEADLINE.split(' ')
+const HEADLINE_LINES = [
+  ['Techshore'],
+  ['Coworking', 'Space'],
+]
+
+function HeroHeadlineWord({ word }) {
+  return (
+    <span className="hero-headline-word">
+      <motion.span variants={heroWordReveal} className="hero-headline-inner">
+        {word}
+      </motion.span>
+    </span>
+  )
+}
 
 export default function Hero() {
-  const sectionRef = useRef(null)
   const prefersReducedMotion = useReducedMotion()
-
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-  const springX = useSpring(mouseX, { stiffness: 60, damping: 20 })
-  const springY = useSpring(mouseY, { stiffness: 60, damping: 20 })
-
-  const bgX = useTransform(springX, [-0.5, 0.5], ['-1.5%', '1.5%'])
-  const bgY = useTransform(springY, [-0.5, 0.5], ['-1%', '1%'])
-
-  const handleMouseMove = (e) => {
-    if (prefersReducedMotion) return
-    const rect = sectionRef.current?.getBoundingClientRect()
-    if (!rect) return
-    mouseX.set((e.clientX - rect.left) / rect.width - 0.5)
-    mouseY.set((e.clientY - rect.top) / rect.height - 0.5)
-  }
 
   return (
     <section
       id="home"
-      ref={sectionRef}
-      onMouseMove={handleMouseMove}
-      className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 min-w-0 min-h-[100dvh] min-h-screen flex items-center overflow-hidden bg-primary-navy"
+      className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 min-w-0 min-h-[100dvh] min-h-screen flex items-center overflow-hidden bg-[#0a1630]"
     >
-      <div className="absolute inset-0 hero-bg gpu-layer">
-        <motion.div
-          className="hero-bg-media"
-          style={prefersReducedMotion ? undefined : { x: bgX, y: bgY }}
-        >
-          <img
-            src={HERO_IMAGE}
-            alt="Modern coworking floor at Techshore with professionals working"
-            className="w-full h-full object-cover hero-image-crisp"
-            fetchPriority="high"
-          />
-        </motion.div>
-      </div>
-
-      <div className="absolute inset-0 hero-overlay pointer-events-none" aria-hidden="true" />
-
       <motion.div
         className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 sm:pt-36 sm:pb-28 text-center"
         variants={heroStaggerContainer}
@@ -67,11 +43,11 @@ export default function Hero() {
         animate={prefersReducedMotion ? undefined : 'visible'}
       >
         <motion.h1 variants={heroHeadlineContainer} className="hero-headline">
-          {HEADLINE_WORDS.map((word) => (
-            <span key={word} className="hero-headline-word">
-              <motion.span variants={heroWordReveal} className="hero-headline-inner">
-                {word}
-              </motion.span>
+          {HEADLINE_LINES.map((line, lineIndex) => (
+            <span key={lineIndex} className="hero-headline-line">
+              {line.map((word) => (
+                <HeroHeadlineWord key={word} word={word} />
+              ))}
             </span>
           ))}
         </motion.h1>
@@ -104,7 +80,7 @@ export default function Hero() {
               strength={0.25}
             >
               <CalendarCheck size={18} />
-              Book a Tour
+              Book Workspace
             </MagneticLink>
           </motion.div>
           <motion.div variants={heroCtaButtonReveal} className="w-full sm:w-auto">
