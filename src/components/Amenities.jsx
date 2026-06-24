@@ -19,21 +19,10 @@ import {
 } from 'lucide-react'
 import AnimatedSection from './AnimatedSection'
 import FadeIn from './FadeIn'
+import { cardThemeAt } from '../lib/brandColors'
 import { getRevealVariant, VIEWPORT } from '../lib/motion'
 
 const amenityGroups = [
-  {
-    title: 'Comfort & Convenience',
-    description: 'Everyday essentials for a seamless workday',
-    items: [
-      { icon: Coffee, label: 'Café / Refreshment Area' },
-      { icon: Droplets, label: 'Drinking Water Facility' },
-      { icon: Sparkles, label: 'Daily Housekeeping' },
-      { icon: Bath, label: 'Clean & Hygienic Washrooms' },
-      { icon: ArrowUpDown, label: 'Lift Access' },
-      { icon: CircleParking, label: 'Bike Parking Facility' },
-    ],
-  },
   {
     title: 'Security & Support',
     description: 'Peace of mind with dedicated on-site assistance',
@@ -45,6 +34,17 @@ const amenityGroups = [
     ],
   },
   {
+    title: 'Comfort & Convenience',
+    description: 'Everyday essentials for a seamless workday',
+    items: [
+      { icon: Coffee, label: 'Café / Refreshment Area' },
+      { icon: Sparkles, label: 'Daily Housekeeping' },
+      { icon: Bath, label: 'Clean & Hygienic Washrooms' },
+      { icon: ArrowUpDown, label: 'Lift Access' },
+      { icon: CircleParking, label: 'Bike Parking Facility' },
+    ],
+  },
+  {
     title: 'Business-Friendly Features',
     description: 'Tools and flexibility to grow your business',
     items: [
@@ -52,11 +52,94 @@ const amenityGroups = [
       { icon: Building2, label: 'Business Registration Address' },
       { icon: Printer, label: 'Printing & Scanning Services' },
       { icon: LayoutGrid, label: 'Flexible Seating Plans' },
-      { icon: Clock, label: '24/7 Access' },
       { icon: Users, label: 'Networking Environment' },
     ],
   },
 ]
+
+function CategorySeparator() {
+  return (
+    <div className="flex items-center gap-3 py-10 sm:py-14" aria-hidden="true">
+      <div className="h-px flex-1 border-t border-dashed border-border" />
+      <div className="flex gap-1.5">
+        <span className="h-1.5 w-1.5 rounded-full bg-[#c1121f]/50" />
+        <span className="h-1.5 w-1.5 rounded-full bg-[#072ac8]/50" />
+        <span className="h-1.5 w-1.5 rounded-full bg-[#f72585]/50" />
+      </div>
+      <div className="h-px flex-1 border-t border-dashed border-border" />
+    </div>
+  )
+}
+
+function CategoryHeading({ title, description, index }) {
+  const parts = title.split('&').map((part) => part.trim())
+
+  return (
+    <header className="text-center">
+      <h3 className="font-display text-[1.75rem] sm:text-4xl font-bold tracking-tight leading-[1.12]">
+        {parts.length > 1 ? (
+          <>
+            <span className="text-text-main">{parts[0]}</span>
+            <span className="font-normal italic text-accent-gold-dark"> &amp; </span>
+            <span className="text-text-main">{parts[1]}</span>
+          </>
+        ) : (
+          <span className="text-text-main">{title}</span>
+        )}
+      </h3>
+
+      <p
+        className={`mt-3 sm:mt-4 text-muted text-base sm:text-lg leading-relaxed max-w-xl mx-auto ${
+          index === 0 ? 'font-medium' : ''
+        }`}
+      >
+        {description}
+      </p>
+
+      <div
+        className={`mt-5 mx-auto h-0.5 w-24 rounded-full bg-gradient-to-r from-transparent to-transparent ${
+          index === 2 ? 'via-primary-navy/30' : 'via-accent-gold/80'
+        }`}
+        aria-hidden="true"
+      />
+    </header>
+  )
+}
+
+function AmenityChip({ icon: Icon, label, theme }) {
+  return (
+    <div
+      className={[
+        theme.bg,
+        theme.border,
+        'border inline-flex items-center gap-2.5 sm:gap-3 px-4 py-2.5 sm:px-5 sm:py-3 rounded-full',
+        'shadow-sm transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-card',
+      ].join(' ')}
+    >
+      <span className={`inline-flex items-center justify-center p-1.5 sm:p-2 rounded-full ${theme.iconBadge}`}>
+        <Icon size={17} strokeWidth={2} aria-hidden="true" />
+      </span>
+      <span className={`text-xs sm:text-sm font-medium leading-snug ${theme.text}`}>{label}</span>
+    </div>
+  )
+}
+
+function AmenityChips({ items, groupIndex }) {
+  let colorOffset = 0
+  for (let i = 0; i < groupIndex; i += 1) {
+    colorOffset += amenityGroups[i].items.length
+  }
+
+  return (
+    <ul className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-2.5 sm:gap-3 list-none">
+      {items.map(({ icon, label }, itemIndex) => (
+        <li key={label}>
+          <AmenityChip icon={icon} label={label} theme={cardThemeAt(colorOffset + itemIndex)} />
+        </li>
+      ))}
+    </ul>
+  )
+}
 
 export default function Amenities() {
   const prefersReducedMotion = useReducedMotion()
@@ -72,37 +155,21 @@ export default function Amenities() {
           </p>
         </FadeIn>
 
-        <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 mt-16 sm:mt-20">
+        <div className="mt-16 sm:mt-20 lg:mt-24 space-y-0">
           {amenityGroups.map((group, index) => (
-            <motion.div
-              key={group.title}
-              initial={prefersReducedMotion ? false : 'hidden'}
-              whileInView={prefersReducedMotion ? undefined : 'visible'}
-              viewport={VIEWPORT}
-              variants={getRevealVariant(index + 3)}
-            >
-              <article className="group flex flex-col h-full rounded-4xl border border-border/80 bg-bg-card p-8 sm:p-9 shadow-card transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-2 hover:shadow-card-hover">
-                <header className="pb-6 mb-6 border-b border-border/60">
-                  <h3 className="font-display text-xl sm:text-2xl font-bold text-text-main tracking-tight leading-tight">
-                    {group.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-muted leading-relaxed">{group.description}</p>
-                </header>
+            <div key={group.title}>
+              <motion.article
+                initial={prefersReducedMotion ? false : 'hidden'}
+                whileInView={prefersReducedMotion ? undefined : 'visible'}
+                viewport={VIEWPORT}
+                variants={getRevealVariant(index + 3)}
+              >
+                <CategoryHeading title={group.title} description={group.description} index={index} />
+                <AmenityChips items={group.items} groupIndex={index} />
+              </motion.article>
 
-                <ul className="space-y-4">
-                  {group.items.map(({ icon: Icon, label }) => (
-                    <li key={label} className="flex items-start gap-3.5">
-                      <div className="icon-badge p-2 rounded-lg">
-                        <Icon size={18} strokeWidth={2} />
-                      </div>
-                      <span className="text-sm font-medium text-muted leading-relaxed pt-0.5">
-                        {label}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            </motion.div>
+              {index < amenityGroups.length - 1 && <CategorySeparator />}
+            </div>
           ))}
         </div>
       </div>

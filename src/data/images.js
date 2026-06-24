@@ -97,6 +97,7 @@ export const NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Spaces', href: '#spaces' },
+  { label: 'Plans', href: '#coworking-plans' },
   { label: 'Amenities', href: '#amenities' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Location', href: '#location' },

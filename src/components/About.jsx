@@ -1,91 +1,185 @@
+import { useRef, useCallback, useState, useEffect } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Rocket, Laptop, Users, Palette } from 'lucide-react'
 import AnimatedSection from './AnimatedSection'
 import FadeIn from './FadeIn'
 import { ABOUT_IMAGE } from '../data/images'
+import { brandCardThemes } from '../lib/brandColors'
 import { getRevealVariant, VIEWPORT } from '../lib/motion'
 
 const audiences = [
   {
     icon: Rocket,
-    title: 'For Startups and Entrepreneurs',
+    shortTitle: 'Startups & Entrepreneurs',
     description:
       'Scale without heavy overhead — flexible plans, a collaborative atmosphere, and the infrastructure early-stage teams need to move fast.',
+    theme: brandCardThemes[0],
   },
   {
     icon: Laptop,
-    title: 'For Remote Employees and Professionals',
+    shortTitle: 'Remote Work',
     description:
       'Leave the home desk behind for a professional setting with reliable WiFi, fewer distractions, and a routine that keeps you focused.',
+    theme: brandCardThemes[1],
   },
   {
     icon: Users,
-    title: 'For Small Businesses and Teams',
+    shortTitle: 'Small Businesses & Teams',
     description:
       'Private cabins and meeting rooms give your team a dedicated base to collaborate, host clients, and work with clarity.',
+    theme: brandCardThemes[2],
   },
   {
     icon: Palette,
-    title: 'For Digital Creators and Designers',
+    shortTitle: 'Digital Creators & Designers',
     description:
       'A calm, well-lit space with the connectivity and privacy to create, edit, and deliver — without working in isolation.',
+    theme: brandCardThemes[3],
   },
 ]
 
+const PILLAR_ABOVE = 'h-12 sm:h-16 md:h-20'
+const IMAGE_TOP = 'top-12 sm:top-16 md:top-20'
+
+function AboutImage({ className, imageRef, onLoad }) {
+  return (
+    <div className={`relative overflow-hidden shadow-premium ring-1 ring-white/30 ${className}`}>
+      <img
+        src={ABOUT_IMAGE}
+        alt="Techshore reception area with branding"
+        className="w-full h-auto block"
+        loading="lazy"
+        onLoad={onLoad}
+        ref={imageRef}
+      />
+      <div
+        className="absolute inset-0 bg-gradient-to-t from-primary-navy/20 to-transparent pointer-events-none"
+        aria-hidden="true"
+      />
+    </div>
+  )
+}
+
+function AudienceContent({ audience, iconSize, titleClass, descClass, paddingClass }) {
+  const Icon = audience.icon
+
+  return (
+    <div className={paddingClass}>
+      <div className={`inline-flex items-center justify-center rounded-xl ${audience.theme.iconBadge} p-2.5 sm:p-3`}>
+        <Icon size={iconSize} strokeWidth={2} aria-hidden="true" />
+      </div>
+      <h3 className={`mt-3 font-display font-bold tracking-tight leading-snug ${audience.theme.text} ${titleClass}`}>
+        {audience.shortTitle}
+      </h3>
+      <p className={`mt-2 leading-relaxed ${audience.theme.muted} ${descClass}`}>
+        {audience.description}
+      </p>
+    </div>
+  )
+}
+
 export default function About() {
   const prefersReducedMotion = useReducedMotion()
+  const imageRef = useRef(null)
+  const [imageHeight, setImageHeight] = useState(0)
+
+  const syncImageHeight = useCallback(() => {
+    if (imageRef.current) {
+      setImageHeight(imageRef.current.offsetHeight)
+    }
+  }, [])
+
+  useEffect(() => {
+    syncImageHeight()
+    window.addEventListener('resize', syncImageHeight)
+    return () => window.removeEventListener('resize', syncImageHeight)
+  }, [syncImageHeight])
 
   return (
     <AnimatedSection id="about" className="section-padding">
       <div className="max-w-7xl mx-auto">
         <FadeIn seed="about-header" className="text-center max-w-2xl mx-auto">
-          <span className="section-eyebrow">About Us</span>
-          <h2 className="section-title mt-3">Why Choose Techshore?</h2>
-        </FadeIn>
-
-        <FadeIn seed="about-image" className="mt-12 sm:mt-16">
-          <div className="relative rounded-4xl overflow-hidden shadow-premium">
-            <img
-              src={ABOUT_IMAGE}
-              alt="Techshore reception area with branding"
-              className="w-full h-auto block"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary-navy/20 to-transparent pointer-events-none" aria-hidden="true" />
-          </div>
+          <span className="section-eyebrow">Greetings</span>
+          <h2 className="section-title mt-3">We welcome every business, creator and influencer.</h2>
         </FadeIn>
 
         <FadeIn seed="about-text" className="mt-10 sm:mt-12 max-w-3xl mx-auto text-center">
           <p className="text-muted text-lg leading-relaxed">
-            Techshore Coworking Space offers modern and productive work environments with excellent connectivity, premium amenities, and flexible workspace options tailored to professionals, startups, and businesses.
+            From entrepreneurs and startups to content creators and influencers, Techshore Coworking Space delivers flexible workspaces, premium facilities, and a vibrant community to help you thrive.
           </p>
         </FadeIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 mt-12 sm:mt-14 max-w-5xl mx-auto">
-          {audiences.map((audience, index) => {
-            const Icon = audience.icon
-            return (
-              <motion.article
-                key={audience.title}
-                className="audience-card group"
+        <FadeIn seed="about-composition" className="mt-12 sm:mt-16">
+          {/* Mobile: stacked image + full-width audience blocks */}
+          <div className="md:hidden max-w-lg mx-auto" aria-label="Who we welcome">
+            <AboutImage className="rounded-2xl" />
+
+            <div className="mt-4 flex flex-col gap-3">
+              {audiences.map((audience, index) => (
+                <motion.div
+                  key={audience.shortTitle}
+                  className={`${audience.theme.bg} rounded-2xl overflow-hidden flex`}
+                  initial={prefersReducedMotion ? false : 'hidden'}
+                  whileInView={prefersReducedMotion ? undefined : 'visible'}
+                  viewport={VIEWPORT}
+                  variants={getRevealVariant(index + 2)}
+                >
+                  <div className={`w-1.5 shrink-0 ${audience.theme.accent}`} aria-hidden="true" />
+                  <AudienceContent
+                    audience={audience}
+                    iconSize={24}
+                    titleClass="text-base"
+                    descClass="text-sm"
+                    paddingClass="px-4 py-5 text-left flex-1 min-w-0"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop: four-pillar composition */}
+          <div
+            className="relative hidden md:grid grid-cols-4 items-stretch gap-x-3 lg:gap-x-4 max-w-6xl mx-auto overflow-visible"
+            aria-label="Who we welcome"
+          >
+            {audiences.map((audience, index) => (
+              <motion.div
+                key={audience.shortTitle}
+                className={`${audience.theme.bg} rounded-t-2xl lg:rounded-t-3xl flex flex-col h-full relative z-0`}
                 initial={prefersReducedMotion ? false : 'hidden'}
                 whileInView={prefersReducedMotion ? undefined : 'visible'}
                 viewport={VIEWPORT}
                 variants={getRevealVariant(index + 2)}
               >
-                <div className="icon-badge p-3.5 rounded-2xl mb-5">
-                  <Icon size={26} strokeWidth={2} aria-hidden="true" />
-                </div>
-                <h3 className="font-display text-lg sm:text-xl font-bold text-text-main tracking-tight leading-snug">
-                  {audience.title}
-                </h3>
-                <p className="mt-3 text-sm sm:text-base text-muted leading-relaxed">
-                  {audience.description}
-                </p>
-              </motion.article>
-            )
-          })}
-        </div>
+                <div className={`shrink-0 ${PILLAR_ABOVE}`} aria-hidden="true" />
+
+                <div
+                  className="shrink-0"
+                  style={{ height: imageHeight > 0 ? `${imageHeight}px` : '12rem' }}
+                  aria-hidden="true"
+                />
+
+                <div className="flex-1 min-h-12 md:min-h-16 lg:min-h-20" aria-hidden="true" />
+
+                <AudienceContent
+                  audience={audience}
+                  iconSize={22}
+                  titleClass="text-sm lg:text-base"
+                  descClass="text-xs lg:text-sm"
+                  paddingClass="px-3 lg:px-4 pb-4 lg:pb-5 pt-6 lg:pt-10 text-left shrink-0"
+                />
+              </motion.div>
+            ))}
+
+            <div className={`absolute left-1/2 -translate-x-1/2 w-[132%] lg:w-[122%] z-20 ${IMAGE_TOP}`}>
+              <AboutImage
+                imageRef={imageRef}
+                onLoad={syncImageHeight}
+                className="rounded-3xl lg:rounded-4xl"
+              />
+            </div>
+          </div>
+        </FadeIn>
       </div>
     </AnimatedSection>
   )
