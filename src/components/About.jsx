@@ -41,6 +41,56 @@ const audiences = [
 const PILLAR_ABOVE = 'h-12 sm:h-16 md:h-20'
 const IMAGE_TOP = 'top-12 sm:top-16 md:top-20'
 
+const PILLAR_FOOTER_ACCENTS = [
+  'bg-brand-red/45',
+  'bg-primary-navy/30',
+  'bg-brand-blue/45',
+  'bg-brand-green/45',
+]
+
+function PillarFooter({ index }) {
+  const accent = PILLAR_FOOTER_ACCENTS[index % PILLAR_FOOTER_ACCENTS.length]
+
+  const footers = [
+    // Startups — ascending steps
+    <div className="flex items-end justify-center gap-1.5 h-9 lg:h-10" aria-hidden="true">
+      <span className={`w-2.5 h-2 rounded-t-md ${accent}`} />
+      <span className={`w-2.5 h-3.5 rounded-t-md ${accent}`} />
+      <span className={`w-2.5 h-5 rounded-t-md ${accent}`} />
+      <span className={`w-2.5 h-7 rounded-t-md ${accent}`} />
+    </div>,
+    // Remote — framed window
+    <div className="flex justify-center items-end h-9 lg:h-10" aria-hidden="true">
+      <div className={`flex gap-1 p-1.5 rounded-md ${accent}`}>
+        <span className="h-6 w-4 rounded-sm bg-white/50" />
+        <span className="h-6 w-4 rounded-sm bg-white/50" />
+      </div>
+    </div>,
+    // Teams — overlapping circles
+    <div className="flex items-center justify-center h-9 lg:h-10" aria-hidden="true">
+      <span className={`h-5 w-5 rounded-full ${accent} opacity-75`} />
+      <span className={`h-7 w-7 rounded-full ${accent} -mx-2 z-[1] ring-2 ring-white/60`} />
+      <span className={`h-5 w-5 rounded-full ${accent} opacity-75`} />
+    </div>,
+    // Creators — stacked layers
+    <div className="relative flex justify-center items-center h-9 lg:h-10 w-14 mx-auto" aria-hidden="true">
+      <span className={`absolute w-10 h-6 rounded-sm ${accent} opacity-35 translate-x-1.5 -translate-y-1`} />
+      <span className={`absolute w-10 h-6 rounded-sm ${accent} opacity-60`} />
+      <span className={`relative w-10 h-6 rounded-sm ${accent} -translate-x-1.5 translate-y-1`} />
+    </div>,
+  ]
+
+  return (
+    <div className="shrink-0 mt-6 lg:mt-8 pb-6 lg:pb-8">
+      {footers[index % footers.length]}
+      <div
+        className={`mx-auto mt-4 h-0.5 w-10 rounded-full ${accent} opacity-50`}
+        aria-hidden="true"
+      />
+    </div>
+  )
+}
+
 function AboutImage({ className, imageRef, onLoad }) {
   return (
     <div className={`relative overflow-hidden shadow-premium ring-1 ring-white/30 ${className}`}>
@@ -118,20 +168,23 @@ export default function About() {
               {audiences.map((audience, index) => (
                 <motion.div
                   key={audience.shortTitle}
-                  className={`${audience.theme.bg} rounded-2xl overflow-hidden flex`}
+                  className={`${audience.theme.bg} rounded-2xl overflow-hidden flex flex-col`}
                   initial={prefersReducedMotion ? false : 'hidden'}
                   whileInView={prefersReducedMotion ? undefined : 'visible'}
                   viewport={VIEWPORT}
                   variants={getRevealVariant(index + 2)}
                 >
-                  <div className={`w-1.5 shrink-0 ${audience.theme.accent}`} aria-hidden="true" />
-                  <AudienceContent
-                    audience={audience}
-                    iconSize={24}
-                    titleClass="text-base"
-                    descClass="text-sm"
-                    paddingClass="px-4 py-5 text-left flex-1 min-w-0"
-                  />
+                  <div className="flex flex-1 min-w-0">
+                    <div className={`w-1.5 shrink-0 ${audience.theme.accent}`} aria-hidden="true" />
+                    <AudienceContent
+                      audience={audience}
+                      iconSize={24}
+                      titleClass="text-base"
+                      descClass="text-sm"
+                      paddingClass="px-4 pt-5 pb-6 text-left flex-1 min-w-0"
+                    />
+                  </div>
+                  <PillarFooter index={index} />
                 </motion.div>
               ))}
             </div>
@@ -145,7 +198,7 @@ export default function About() {
             {audiences.map((audience, index) => (
               <motion.div
                 key={audience.shortTitle}
-                className={`${audience.theme.bg} rounded-t-2xl lg:rounded-t-3xl flex flex-col h-full relative z-0`}
+                className={`${audience.theme.bg} rounded-t-2xl lg:rounded-t-3xl rounded-b-2xl lg:rounded-b-3xl overflow-hidden flex flex-col h-full relative z-0`}
                 initial={prefersReducedMotion ? false : 'hidden'}
                 whileInView={prefersReducedMotion ? undefined : 'visible'}
                 viewport={VIEWPORT}
@@ -166,8 +219,9 @@ export default function About() {
                   iconSize={22}
                   titleClass="text-sm lg:text-base"
                   descClass="text-xs lg:text-sm"
-                  paddingClass="px-3 lg:px-4 pb-4 lg:pb-5 pt-6 lg:pt-10 text-left shrink-0"
+                  paddingClass="px-3 lg:px-4 pt-6 lg:pt-10 pb-6 lg:pb-8 text-left shrink-0"
                 />
+                <PillarFooter index={index} />
               </motion.div>
             ))}
 

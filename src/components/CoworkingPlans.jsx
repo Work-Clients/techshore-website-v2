@@ -34,19 +34,19 @@ function PlanDivider() {
   return (
     <div className="flex items-center justify-center shrink-0" aria-hidden="true">
       <div className="flex md:hidden items-center gap-4 w-full max-w-xs mx-auto py-6">
-        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary-navy/20 to-[#072ac8]/40" />
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary-navy/20 to-brand-blue/40" />
         <div className="flex flex-col items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#c1121f]/55" />
+          <span className="h-1.5 w-1.5 rounded-full bg-brand-red/55" />
           <span className="text-[0.55rem] font-semibold uppercase tracking-[0.35em] text-primary-navy/35">
             or
           </span>
-          <span className="h-1.5 w-1.5 rounded-full bg-[#f72585]/55" />
+          <span className="h-1.5 w-1.5 rounded-full bg-brand-green/55" />
         </div>
-        <div className="h-px flex-1 bg-gradient-to-l from-transparent via-primary-navy/20 to-[#072ac8]/40" />
+        <div className="h-px flex-1 bg-gradient-to-l from-transparent via-primary-navy/20 to-brand-blue/40" />
       </div>
 
       <div className="hidden md:flex flex-col items-center justify-center self-stretch px-6 lg:px-10 py-4 min-h-[14rem]">
-        <div className="w-px flex-1 bg-gradient-to-b from-transparent via-[#c1121f]/30 to-[#072ac8]/35" />
+        <div className="w-px flex-1 bg-gradient-to-b from-transparent via-brand-red/30 to-brand-blue/35" />
         <div className="flex flex-col items-center gap-2.5 my-5">
           <span className="h-2 w-2 rounded-full bg-accent-gold/80 ring-2 ring-accent-gold/20" />
           <span className="text-[0.55rem] font-semibold uppercase tracking-[0.4em] text-primary-navy/40">
@@ -54,7 +54,7 @@ function PlanDivider() {
           </span>
           <span className="h-2 w-2 rounded-full bg-accent-gold/80 ring-2 ring-accent-gold/20" />
         </div>
-        <div className="w-px flex-1 bg-gradient-to-b from-[#072ac8]/35 via-[#f72585]/30 to-transparent" />
+        <div className="w-px flex-1 bg-gradient-to-b from-brand-blue/35 via-brand-green/30 to-transparent" />
       </div>
     </div>
   )
@@ -74,7 +74,7 @@ export default function CoworkingPlans() {
           variants={fadeUp}
         >
           <h2 className="font-display text-[2.35rem] sm:text-5xl lg:text-[3.25rem] font-bold leading-[1.08] text-text-main">
-            Flexible coworking{' '}
+            Flexible {' '}
             <span className="block sm:inline font-light text-primary-navy/65">plans</span>
           </h2>
           <p className="mt-8 sm:mt-10 mx-auto max-w-xl text-base sm:text-lg text-muted leading-[1.75]">

@@ -29,19 +29,19 @@ const amenityGroups = [
     items: [
       { icon: Cctv, label: 'CCTV Surveillance' },
       { icon: ShieldCheck, label: 'Secure Access' },
-      { icon: Headset, label: 'Reception & Administrative Support' },
       { icon: Package, label: 'Courier & Package Handling' },
+      { icon: Headset, label: 'Reception & Administrative Support' },
     ],
   },
   {
     title: 'Comfort & Convenience',
     description: 'Everyday essentials for a seamless workday',
     items: [
-      { icon: Coffee, label: 'Café / Refreshment Area' },
-      { icon: Sparkles, label: 'Daily Housekeeping' },
-      { icon: Bath, label: 'Clean & Hygienic Washrooms' },
       { icon: ArrowUpDown, label: 'Lift Access' },
+      { icon: Sparkles, label: 'Daily Housekeeping' },
       { icon: CircleParking, label: 'Bike Parking Facility' },
+      { icon: Coffee, label: 'Café / Refreshment Area' },
+      { icon: Bath, label: 'Clean & Hygienic Washrooms' },
     ],
   },
   {
@@ -49,10 +49,10 @@ const amenityGroups = [
     description: 'Tools and flexibility to grow your business',
     items: [
       { icon: MapPin, label: 'Prime Location' },
-      { icon: Building2, label: 'Business Registration Address' },
-      { icon: Printer, label: 'Printing & Scanning Services' },
       { icon: LayoutGrid, label: 'Flexible Seating Plans' },
       { icon: Users, label: 'Networking Environment' },
+      { icon: Printer, label: 'Printing & Scanning Services' },
+      { icon: Building2, label: 'Business Registration Address' },
     ],
   },
 ]
@@ -62,9 +62,9 @@ function CategorySeparator() {
     <div className="flex items-center gap-3 py-10 sm:py-14" aria-hidden="true">
       <div className="h-px flex-1 border-t border-dashed border-border" />
       <div className="flex gap-1.5">
-        <span className="h-1.5 w-1.5 rounded-full bg-[#c1121f]/50" />
-        <span className="h-1.5 w-1.5 rounded-full bg-[#072ac8]/50" />
-        <span className="h-1.5 w-1.5 rounded-full bg-[#f72585]/50" />
+        <span className="h-1.5 w-1.5 rounded-full bg-brand-red/50" />
+        <span className="h-1.5 w-1.5 rounded-full bg-brand-blue/50" />
+        <span className="h-1.5 w-1.5 rounded-full bg-brand-green/50" />
       </div>
       <div className="h-px flex-1 border-t border-dashed border-border" />
     </div>

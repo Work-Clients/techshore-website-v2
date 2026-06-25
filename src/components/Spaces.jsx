@@ -28,10 +28,10 @@ function WorkspaceSeparator({ index }) {
   return (
     <div className="relative py-10 sm:py-14 lg:py-16" aria-hidden="true">
       <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-border to-transparent" />
-      <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-[#c1121f]/35 via-[#072ac8]/40 via-[#f72585]/35 to-transparent" />
+      <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-brand-red/35 via-brand-blue/40 via-brand-green/35 to-transparent" />
       <div className="relative flex items-center justify-center gap-2 sm:gap-3">
         <span className={`h-2 w-2 rounded-full ${theme.accent} ring-2 ring-white/80 shadow-sm`} />
-        <span className="h-1 w-16 sm:w-24 rounded-full bg-gradient-to-r from-[#c1121f] via-[#072ac8] to-[#f72585] opacity-70" />
+        <span className="h-1 w-16 sm:w-24 rounded-full bg-gradient-to-r from-brand-red via-brand-blue to-brand-green opacity-70" />
         <span className={`h-2 w-2 rounded-full ${nextTheme.accent} ring-2 ring-white/80 shadow-sm`} />
       </div>
     </div>

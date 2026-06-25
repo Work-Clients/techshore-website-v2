@@ -21,6 +21,17 @@ export default {
         'text-main': '#1e293b',
         border: '#e2e0d9',
         muted: '#556275',
+        brand: {
+          red: '#c1121f',
+          blue: '#072ac8',
+          green: '#2d6a4f',
+        },
+        pillar: {
+          red: '#f8dde0',
+          navy: '#e1e3e7',
+          blue: '#d6e3fa',
+          green: '#d8ede3',
+        },
       },
       fontFamily: {
         display: ['"Plus Jakarta Sans"', 'sans-serif'],
