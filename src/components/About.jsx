@@ -118,7 +118,7 @@ function AudienceContent({ audience, iconSize, titleClass, descClass, paddingCla
       <div className={`inline-flex items-center justify-center rounded-xl ${audience.theme.iconBadge} p-2.5 sm:p-3`}>
         <Icon size={iconSize} strokeWidth={2} aria-hidden="true" />
       </div>
-      <h3 className={`mt-3 font-display font-bold tracking-tight leading-snug ${audience.theme.text} ${titleClass}`}>
+      <h3 className={`mt-3 font-display font-semibold tracking-[-0.02em] leading-snug ${audience.theme.text} ${titleClass}`}>
         {audience.shortTitle}
       </h3>
       <p className={`mt-2 leading-relaxed ${audience.theme.muted} ${descClass}`}>

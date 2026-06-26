@@ -10,10 +10,12 @@ import {
   heroCtaButtonReveal,
 } from '../lib/motion'
 import MagneticLink from './MagneticLink'
+import Navbar from './Navbar'
+import { BRAND_GRADIENT_BACKGROUND } from '../lib/brandTheme'
 
 const HEADLINE_LINES = [
-  ['Techshore'],
-  ['Coworking', 'Space'],
+  ['TECHSHORE'],
+  ['Co-Working', 'Space'],
 ]
 
 function HeroHeadlineWord({ word, index, reduced }) {
@@ -38,9 +40,12 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 min-w-0 min-h-[100dvh] min-h-screen flex items-center overflow-hidden bg-[#0a1630]"
+      style={{ background: BRAND_GRADIENT_BACKGROUND }}
+      className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 min-w-0 min-h-[100dvh] min-h-screen flex flex-col overflow-hidden"
     >
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 sm:pt-36 sm:pb-28 text-center">
+      <Navbar />
+
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-36 pb-24 sm:pb-28 text-center">
         <motion.div
           className="hero-logo-shell"
           variants={heroLogoReveal}
@@ -51,15 +56,20 @@ export default function Hero() {
             src={LOGO}
             alt="Techshore Coworking Space"
             className="hero-logo-img"
-            width={224}
-            height={224}
+            width={320}
+            height={320}
             fetchPriority="high"
           />
         </motion.div>
 
         <h1 className="hero-headline">
           {HEADLINE_LINES.map((line, lineIndex) => (
-            <span key={lineIndex} className="hero-headline-line">
+            <span
+              key={lineIndex}
+              className={
+                lineIndex === 0 ? 'hero-headline-line hero-headline-line-primary' : 'hero-headline-line hero-headline-line-secondary'
+              }
+            >
               {line.map((word, wordIndex) => (
                 <HeroHeadlineWord
                   key={word}

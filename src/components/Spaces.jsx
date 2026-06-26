@@ -92,7 +92,7 @@ function WorkspaceText({ card, index, theme }) {
           <Icon size={22} strokeWidth={2} aria-hidden="true" />
         </div>
 
-        <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-text-main tracking-tight leading-[1.15] mt-5">
+        <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold text-text-main tracking-[-0.02em] leading-[1.12] mt-5">
           {card.title}
         </h3>
 

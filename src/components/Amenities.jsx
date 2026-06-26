@@ -76,7 +76,7 @@ function CategoryHeading({ title, description, index }) {
 
   return (
     <header className="text-center">
-      <h3 className="font-display text-[1.75rem] sm:text-4xl font-bold tracking-tight leading-[1.12]">
+      <h3 className="font-display text-[1.75rem] sm:text-4xl font-semibold leading-[1.1] tracking-[-0.02em]">
         {parts.length > 1 ? (
           <>
             <span className="text-text-main">{parts[0]}</span>

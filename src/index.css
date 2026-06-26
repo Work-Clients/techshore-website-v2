@@ -26,6 +26,10 @@
 
     --color-accent-gold-dark: #9a7b3c;
 
+    --color-accent-cta: #01c4c0;
+
+    --color-accent-cta-hover: #01b0ac;
+
     --color-bg-main: #f8f9fa;
 
     --color-bg-card: #f1ede4;
@@ -110,7 +114,7 @@
 
   .section-eyebrow {
 
-    @apply font-semibold text-xs tracking-[0.12em] uppercase;
+    @apply font-body font-semibold text-xs tracking-[0.12em] uppercase;
 
     color: var(--color-accent-gold-dark);
 
@@ -120,7 +124,9 @@
 
   .section-title {
 
-    @apply font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-text-main tracking-tight leading-[1.15];
+    @apply font-display text-3xl sm:text-4xl lg:text-[2.85rem] font-semibold text-text-main leading-[1.1];
+
+    letter-spacing: -0.015em;
 
   }
 
@@ -138,15 +144,33 @@
 
     @apply relative inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full overflow-hidden
 
-      bg-accent-gold text-primary-navy font-semibold text-sm tracking-wide
+      text-white font-body font-semibold text-sm tracking-wide
 
       transition-[transform,background-color,box-shadow] duration-300 ease-out
 
-      hover:bg-accent-gold/90 hover:-translate-y-0.5
+      hover:-translate-y-0.5
 
-      focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 focus-visible:ring-offset-bg-main;
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-main;
 
-    box-shadow: 0 4px 16px rgba(223, 177, 91, 0.35);
+    background-color: #01c4c0;
+
+    box-shadow: 0 4px 16px rgba(1, 196, 192, 0.35);
+
+  }
+
+
+
+  .btn-primary:hover {
+
+    background-color: #01b0ac;
+
+  }
+
+
+
+  .btn-primary:focus-visible {
+
+    --tw-ring-color: var(--color-accent-cta);
 
   }
 
@@ -156,7 +180,7 @@
 
     @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full
 
-      bg-white/10 backdrop-blur-md text-white font-semibold text-sm tracking-wide
+      bg-white/10 backdrop-blur-md text-white font-body font-semibold text-sm tracking-wide
 
       border border-white/30 transition-[background-color,transform] duration-300 ease-out
 
@@ -172,15 +196,33 @@
 
     @apply relative inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full overflow-hidden
 
-      bg-accent-gold text-primary-navy font-semibold text-sm tracking-wide
+      text-white font-body font-semibold text-sm tracking-wide
 
       transition-[transform,background-color,box-shadow] duration-300 ease-out
 
-      hover:bg-accent-gold/90 hover:-translate-y-0.5
+      hover:-translate-y-0.5
 
-      focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 focus-visible:ring-offset-transparent;
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent;
 
-    box-shadow: 0 4px 20px rgba(223, 177, 91, 0.4);
+    background-color: #01c4c0;
+
+    box-shadow: 0 4px 20px rgba(1, 196, 192, 0.4);
+
+  }
+
+
+
+  .btn-hero-primary:hover {
+
+    background-color: #01b0ac;
+
+  }
+
+
+
+  .btn-hero-primary:focus-visible {
+
+    --tw-ring-color: var(--color-accent-cta);
 
   }
 
@@ -190,7 +232,7 @@
 
     @apply inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full
 
-      text-white font-semibold text-sm tracking-wide
+      text-white font-body font-semibold text-sm tracking-wide
 
       border border-white/30 transition-[background-color,transform,border-color] duration-300 ease-out
 
@@ -212,23 +254,49 @@
 
     @apply relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full overflow-hidden
 
-      bg-accent-gold text-primary-navy font-semibold text-xs tracking-wide
+      text-white font-body font-semibold text-xs tracking-wide
 
       transition-[transform,background-color] duration-300 ease-out
 
-      hover:bg-accent-gold/90 hover:-translate-y-0.5
+      hover:-translate-y-0.5
 
-      focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 focus-visible:ring-offset-primary-navy;
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-navy;
 
-    box-shadow: 0 2px 12px rgba(223, 177, 91, 0.3);
+    background-color: #01c4c0;
+
+    box-shadow: 0 2px 12px rgba(1, 196, 192, 0.3);
 
   }
 
 
 
-  .nav-transparent {
+  .btn-nav:hover {
 
-    background: #0a1630;
+    background-color: #01b0ac;
+
+  }
+
+
+
+  .btn-nav:focus-visible {
+
+    --tw-ring-color: var(--color-accent-cta);
+
+  }
+
+
+
+  a.btn-nav {
+
+    background-color: #01c4c0;
+
+  }
+
+
+
+  a.btn-nav:hover {
+
+    background-color: #01b0ac;
 
   }
 
@@ -236,15 +304,9 @@
 
   .nav-scrolled {
 
-    background: rgba(10, 22, 48, 0.92);
-
     backdrop-filter: blur(18px);
 
     -webkit-backdrop-filter: blur(18px);
-
-    @apply border-b border-white/10;
-
-    box-shadow: 0 1px 12px rgba(10, 22, 48, 0.25);
 
   }
 
@@ -252,7 +314,7 @@
 
   .nav-link {
 
-    @apply relative text-white/75 transition-colors duration-200 hover:text-accent-gold;
+    @apply relative font-body text-white/75 transition-colors duration-200 hover:text-accent-gold;
 
   }
 
@@ -422,7 +484,7 @@
 
     @apply flex items-center justify-center origin-top;
 
-    margin-bottom: calc(clamp(9rem, 22vw, 14rem) * -0.56 + 0.25rem);
+    margin-bottom: calc(clamp(13rem, 30vw, 20rem) * -0.56 + 0.25rem);
 
   }
 
@@ -432,9 +494,9 @@
 
     @apply object-contain;
 
-    width: clamp(9rem, 22vw, 14rem);
+    width: clamp(13rem, 30vw, 20rem);
 
-    height: clamp(9rem, 22vw, 14rem);
+    height: clamp(13rem, 30vw, 20rem);
 
   }
 
@@ -442,13 +504,7 @@
 
   .hero-headline {
 
-    @apply font-display text-white leading-[1.1] tracking-tight;
-
-    font-size: clamp(2.75rem, 5.5vw, 4.75rem);
-
-    font-weight: 800;
-
-    letter-spacing: -0.05em;
+    @apply font-display text-white inline-flex flex-col items-center;
 
     perspective: 900px;
 
@@ -461,6 +517,43 @@
   .hero-headline-line {
 
     @apply block;
+
+  }
+
+
+
+  .hero-headline-line-primary {
+
+    @apply font-display font-semibold leading-[0.92];
+
+    font-size: clamp(3.5rem, 7.5vw, 6.75rem);
+    letter-spacing: -0.02em;
+
+  }
+
+
+
+  .hero-headline-line-secondary {
+
+    @apply font-body w-full text-center leading-[1.15] whitespace-nowrap font-medium;
+
+    font-size: clamp(1.7rem, 4.2vw, 2.8rem);
+
+    letter-spacing: 0.14em;
+
+    margin-top: 0.2em;
+
+  }
+
+
+
+  .hero-headline-line-secondary .hero-headline-word {
+
+    margin-right: 0.12em;
+
+    padding-right: 0.04em;
+
+    padding-bottom: 0.08em;
 
   }
 
@@ -492,9 +585,9 @@
 
   .hero-subheadline {
 
-    @apply text-lg sm:text-xl lg:text-2xl text-white/85 leading-relaxed font-normal max-w-xl mx-auto;
+    @apply font-body text-lg sm:text-xl lg:text-2xl text-white/85 leading-relaxed font-normal max-w-xl mx-auto;
 
-    letter-spacing: -0.01em;
+    letter-spacing: 0.01em;
 
   }
 
@@ -502,7 +595,7 @@
 
   .hero-location {
 
-    @apply inline-flex items-center justify-center gap-2 text-sm sm:text-base text-white/60 font-medium tracking-wide;
+    @apply font-body inline-flex items-center justify-center gap-2 text-sm sm:text-base text-white/60 font-medium tracking-wide;
 
   }
 

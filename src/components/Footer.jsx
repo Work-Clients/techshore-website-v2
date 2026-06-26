@@ -1,17 +1,28 @@
 import { MapPin, Phone } from 'lucide-react'
 import { LOGO, NAV_LINKS, ADDRESS, PHONE, WHATSAPP_URL } from '../data/images'
+import { BRAND_GRADIENT_BACKGROUND } from '../lib/brandTheme'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-primary-navy text-white border-t border-white/10">
+    <footer
+      style={{ background: BRAND_GRADIENT_BACKGROUND }}
+      className="text-white border-t border-white/10"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           <div className="lg:col-span-1">
             <a href="#home" className="flex items-center gap-3">
               <img src={LOGO} alt="Techshore Coworking Space" className="h-12 w-12 object-contain" width={48} height={48} />
-              <span className="font-display font-bold text-xl">Techshore</span>
+              <div className="flex flex-col leading-tight">
+                <span className="font-display font-semibold text-xl tracking-normal text-white">
+                  TECHSHORE
+                </span>
+                <span className="text-[0.65rem] sm:text-xs font-medium tracking-[0.22em] text-white/65">
+                  co-working
+                </span>
+              </div>
             </a>
             <p className="mt-4 text-white/55 text-sm leading-relaxed">
               Premium coworking spaces in Kukatpally, designed for modern professionals and growing businesses.

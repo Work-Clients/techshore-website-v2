@@ -5,27 +5,7 @@ export const HERO_IMAGE = '/photos/open-desk-five.jpeg'
 export const ABOUT_IMAGE = '/photos/reception-entrance.jpeg'
 
 export const WORKSPACE_CARDS = [
-  {
-    title: 'Dedicated Desks',
-    description: 'For professionals needing a fixed workspace with personal storage and a consistent spot to focus.',
-    images: [
-      '/photos/interor-views.JPG',
-      '/photos/dedicated-desk-without-people.JPG',
-      '/photos/dedicated-desk-area.JPG',
-    ],
-    icon: 'Monitor',
-  },
-  {
-    title: 'Dedicated Cabins',
-    description: 'Private cabins for teams and businesses seeking confidentiality, collaboration, and comfort.',
-    images: [
-      '/photos/dedicated-cabin-inside-view.JPG',
-      '/photos/dedicated-cabin-inside-view-two.JPG',
-      '/photos/dedicated-cabin-view-three.JPG',
-    ],
-    icon: 'DoorClosed',
-  },
-  {
+    {
     title: 'Open Desks',
     description: 'Flexible seating for freelancers and remote workers who thrive in a vibrant community setting.',
     images: [
@@ -37,6 +17,26 @@ export const WORKSPACE_CARDS = [
       // '/photos/open-desk-space-two.jpg',
     ],
     icon: 'Users',
+  },
+  {
+    title: 'Dedicated Desks',
+    description: 'For professionals needing a fixed workspace with personal storage and a consistent spot to focus.',
+    images: [
+      '/photos/interor-views.JPG',
+      '/photos/dedicated-desk-without-people.JPG',
+      '/photos/dedicated-desk-area.JPG',
+    ],
+    icon: 'Monitor',
+  },
+  {
+    title: 'Dedicated Office Cabins',
+    description: 'Private cabins for teams and businesses seeking confidentiality, collaboration, and comfort.',
+    images: [
+      '/photos/dedicated-cabin-inside-view.JPG',
+      '/photos/dedicated-cabin-inside-view-two.JPG',
+      '/photos/dedicated-cabin-view-three.JPG',
+    ],
+    icon: 'DoorClosed',
   },
   {
     title: 'Meeting Cabins',
@@ -80,11 +80,12 @@ export const PHONE = '+91 9030082758'
 export const ADDRESS = {
   name: 'Techshore Coworking Space',
   lines: [
-    'LIG 20, Dharma Reddy Colony Phase II,',
-    'Kukatpally Housing Board Colony,',
-    'Kukatpally, Hyderabad, Telangana 500072',
+    'Opp line to JNTU, L.I.G, 20,',
+    'Housing Board Colony,',
+    'Dharma Reddy Colony Phase I,',
+    'Kukatpally, Hyderabad, Telangana 500072.',
   ],
-  full: 'Techshore Coworking Space, LIG 20, Dharma Reddy Colony Phase II, Kukatpally Housing Board Colony, Kukatpally, Hyderabad, Telangana 500072',
+  full: 'Opp line to JNTU, L.I.G, 20, Kukatpally Housing Board Colony, Dharma Reddy Colony Phase I, Kukatpally, Hyderabad, Telangana 500072, India',
 }
 
 export const MAP_EMBED_URL =

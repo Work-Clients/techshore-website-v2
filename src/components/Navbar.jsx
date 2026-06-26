@@ -1,29 +1,38 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { LOGO, NAV_LINKS, WHATSAPP_URL } from '../data/images'
+import { BRAND_GRADIENT_BACKGROUND } from '../lib/brandTheme'
 import { EASE_SMOOTH, getRevealVariantByKey } from '../lib/motion'
 import MagneticLink from './MagneticLink'
 
+const NAV_HEIGHT_PX = 72
+
+function isHeroBehindNav() {
+  const hero = document.getElementById('home')
+  if (!hero) return false
+
+  const rect = hero.getBoundingClientRect()
+  return rect.top <= 0 && rect.bottom > NAV_HEIGHT_PX
+}
+
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
+  const [heroBackdrop, setHeroBackdrop] = useState(isHeroBehindNav)
   const [mobileOpen, setMobileOpen] = useState(false)
 
-  useEffect(() => {
-    let ticking = false
-    const onScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 60)
-          ticking = false
-        })
-        ticking = true
-      }
-    }
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+  const syncHeroBackdrop = useCallback(() => {
+    setHeroBackdrop(isHeroBehindNav())
   }, [])
+
+  useEffect(() => {
+    syncHeroBackdrop()
+    window.addEventListener('scroll', syncHeroBackdrop, { passive: true })
+    window.addEventListener('resize', syncHeroBackdrop)
+    return () => {
+      window.removeEventListener('scroll', syncHeroBackdrop)
+      window.removeEventListener('resize', syncHeroBackdrop)
+    }
+  }, [syncHeroBackdrop])
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
@@ -38,8 +47,9 @@ export default function Navbar() {
 
   return (
     <header
+      style={heroBackdrop ? undefined : { background: BRAND_GRADIENT_BACKGROUND }}
       className={`fixed top-0 left-0 w-screen max-w-[100vw] z-50 transition-all duration-300 ease-out ${
-        scrolled ? 'nav-scrolled' : 'nav-transparent'
+        heroBackdrop ? '' : 'nav-scrolled border-b border-white/10 shadow-nav-scrolled'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 lg:h-[4.5rem]" aria-label="Main navigation">
@@ -55,9 +65,14 @@ export default function Navbar() {
             width={32}
             height={32}
           />
-          <span className="font-display font-bold text-base tracking-tight text-white transition-colors duration-200">
-            Techshore
-          </span>
+          <div className="flex flex-col leading-tight">
+            <span className="font-display font-semibold text-base tracking-normal text-white transition-colors duration-200">
+              TECHSHORE
+            </span>
+            <span className="text-[0.6rem] sm:text-[0.65rem] font-medium tracking-[0.22em] text-white/65 transition-colors duration-200">
+              co-working
+            </span>
+          </div>
         </a>
 
         <ul className="hidden lg:flex items-center gap-1">
@@ -102,7 +117,10 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: EASE_SMOOTH }}
-            className="lg:hidden bg-primary-navy/95 backdrop-blur-xl border-t border-white/10 shadow-xl overflow-hidden"
+            style={heroBackdrop ? undefined : { background: BRAND_GRADIENT_BACKGROUND }}
+            className={`lg:hidden border-t border-white/10 shadow-xl overflow-hidden ${
+              heroBackdrop ? 'bg-primary-navy/40 backdrop-blur-xl' : 'backdrop-blur-xl'
+            }`}
           >
             <motion.ul
               className="px-4 py-4 space-y-1"

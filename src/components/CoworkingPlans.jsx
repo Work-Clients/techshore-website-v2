@@ -22,7 +22,7 @@ function PlanTitle({ primary, optionLabel }) {
         {optionLabel}
       </p>
       <h3 className="font-display leading-none">
-        <span className="block text-[3.5rem] sm:text-[4.5rem] lg:text-[5rem] font-bold text-text-main tracking-tight">
+        <span className="block text-[3.5rem] sm:text-[4.5rem] lg:text-[5rem] font-semibold text-text-main tracking-[-0.02em]">
           {primary}
         </span>
       </h3>
@@ -73,7 +73,7 @@ export default function CoworkingPlans() {
           viewport={VIEWPORT}
           variants={fadeUp}
         >
-          <h2 className="font-display text-[2.35rem] sm:text-5xl lg:text-[3.25rem] font-bold leading-[1.08] text-text-main">
+          <h2 className="font-display text-[2.35rem] sm:text-5xl lg:text-[3.25rem] font-semibold leading-[1.08] tracking-[-0.02em] text-text-main">
             Flexible {' '}
             <span className="block sm:inline font-light text-primary-navy/65">plans</span>
           </h2>
@@ -85,7 +85,7 @@ export default function CoworkingPlans() {
 
         <div className="mt-14 sm:mt-20 flex flex-col md:grid md:grid-cols-[1fr_auto_1fr] md:items-center">
           {plans.map((plan, index) => (
-            <div key={`${plan.primary}`} className="contents">
+            <div key={`${plan.primary} aqFWEEEGEG GGG                   `} className="contents">
               <motion.article
                 className="flex flex-col items-center text-center px-4 sm:px-6 lg:px-8"
                 initial={prefersReducedMotion ? false : 'hidden'}

@@ -28,7 +28,7 @@ export default function Location() {
                   <MapPin size={22} />
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-text-main text-lg">Address</h3>
+                  <h3 className="font-display font-semibold text-text-main text-lg tracking-[-0.01em]">Address</h3>
                   <p className="mt-2 text-muted leading-relaxed">
                     <strong>{ADDRESS.name}</strong>
                     <br />
@@ -49,7 +49,7 @@ export default function Location() {
                   <Phone size={22} />
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-text-main text-lg">Contact</h3>
+                  <h3 className="font-display font-semibold text-text-main text-lg tracking-[-0.01em]">Contact</h3>
                   <a href={`tel:${PHONE.replace(/\s/g, '')}`} className="mt-2 block text-text-main font-medium hover:text-accent-gold transition-colors">
                     {PHONE}
                   </a>

@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import { BRAND_GRADIENT_END_RGB } from './src/lib/brandTheme.js'
+
 export default {
   content: ['./index.html', './src/**/*.{js,jsx,css}'],
   theme: {
@@ -16,6 +18,7 @@ export default {
           DEFAULT: '#dfb15b',
           dark: '#9a7b3c',
         },
+        'accent-cta': '#01c4c0',
         'bg-main': '#f8f9fa',
         'bg-card': '#f1ede4',
         'text-main': '#1e293b',
@@ -34,10 +37,11 @@ export default {
         },
       },
       fontFamily: {
-        display: ['"Plus Jakarta Sans"', 'sans-serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        heading: ['Poppins', 'sans-serif'],
-        body: ['Manrope', 'sans-serif'],
+        sans: ['Bitter', 'Georgia', 'serif'],
+        serif: ['Bitter', 'Georgia', 'serif'],
+        body: ['Bitter', 'Georgia', 'serif'],
+        display: ['Bitter', 'Georgia', 'serif'],
+        heading: ['Bitter', 'Georgia', 'serif'],
       },
       boxShadow: {
         card: '0 1px 3px rgba(10, 22, 48, 0.04), 0 6px 20px rgba(10, 22, 48, 0.05)',
@@ -46,6 +50,7 @@ export default {
         'premium-hover': '0 6px 20px rgba(10, 22, 48, 0.08), 0 20px 48px rgba(10, 22, 48, 0.10)',
         glow: '0 0 40px rgba(223, 177, 91, 0.15)',
         'secondary-glow': '0 0 24px rgba(223, 177, 91, 0.25), 0 4px 20px rgba(223, 177, 91, 0.12)',
+        'nav-scrolled': `0 1px 12px rgb(${BRAND_GRADIENT_END_RGB} / 0.25)`,
       },
       borderRadius: {
         '4xl': '2rem',
