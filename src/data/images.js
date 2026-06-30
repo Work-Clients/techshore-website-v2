@@ -73,6 +73,7 @@ export const GALLERY_IMAGES = [
   { src: '/photos/space-interior-wall.JPG', alt: 'Interior wall design' },
 ]
 
+export const BOOK_NOW_URL = 'https://rzp.io/rzp/pmVdq5V'
 export const WHATSAPP_URL = 'https://wa.me/919030082758'
 export const WHATSAPP_DISPLAY = '+91 9030082758'
 export const PHONE = '+91 9030082758'

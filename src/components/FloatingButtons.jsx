@@ -1,5 +1,5 @@
 import { MessageCircle, CalendarCheck } from 'lucide-react'
-import { WHATSAPP_URL } from '../data/images'
+import { BOOK_NOW_URL, WHATSAPP_URL } from '../data/images'
 
 export default function FloatingButtons() {
   return (
@@ -15,7 +15,7 @@ export default function FloatingButtons() {
       </a>
 
       <a
-        href={WHATSAPP_URL}
+        href={BOOK_NOW_URL}
         target="_blank"
         rel="noopener noreferrer"
         className="btn-nav inline-flex gap-2 pl-4 pr-5 py-3.5 text-sm shadow-lg hover:shadow-xl hover:scale-105 gpu-layer"

@@ -1,5 +1,7 @@
+import { CalendarCheck } from 'lucide-react'
 import { motion, useReducedMotion } from 'framer-motion'
 import AnimatedSection from './AnimatedSection'
+import { BOOK_NOW_URL } from '../data/images'
 import { fadeUp, VIEWPORT } from '../lib/motion'
 
 const plans = [
@@ -85,7 +87,7 @@ export default function CoworkingPlans() {
 
         <div className="mt-14 sm:mt-20 flex flex-col md:grid md:grid-cols-[1fr_auto_1fr] md:items-center">
           {plans.map((plan, index) => (
-            <div key={`${plan.primary} aqFWEEEGEG GGG                   `} className="contents">
+            <div key={plan.primary} className="contents">
               <motion.article
                 className="flex flex-col items-center text-center px-4 sm:px-6 lg:px-8"
                 initial={prefersReducedMotion ? false : 'hidden'}
@@ -100,6 +102,15 @@ export default function CoworkingPlans() {
                 <p className="mt-8 sm:mt-10 text-muted text-[0.95rem] sm:text-base leading-[1.8] max-w-sm">
                   {plan.description}
                 </p>
+                <a
+                  href={BOOK_NOW_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary mt-8 sm:mt-10"
+                >
+                  <CalendarCheck size={18} />
+                  Book Now
+                </a>
               </motion.article>
 
               {index < plans.length - 1 && <PlanDivider />}

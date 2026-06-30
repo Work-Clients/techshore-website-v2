@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { MessageCircle, CalendarCheck, MapPin } from 'lucide-react'
-import { LOGO, WHATSAPP_URL } from '../data/images'
+import { LOGO, BOOK_NOW_URL, WHATSAPP_URL } from '../data/images'
 import {
   heroLogoReveal,
   heroWordReveal,
@@ -123,7 +123,7 @@ export default function Hero() {
             className="w-full sm:w-auto"
           >
             <MagneticLink
-              href={WHATSAPP_URL}
+              href={BOOK_NOW_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-hero-primary w-full sm:w-auto"

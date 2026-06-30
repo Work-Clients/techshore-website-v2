@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import { LOGO, NAV_LINKS, WHATSAPP_URL } from '../data/images'
+import { LOGO, NAV_LINKS, BOOK_NOW_URL } from '../data/images'
 import { BRAND_GRADIENT_BACKGROUND } from '../lib/brandTheme'
 import { EASE_SMOOTH, getRevealVariantByKey } from '../lib/motion'
 import MagneticLink from './MagneticLink'
@@ -90,7 +90,7 @@ export default function Navbar() {
         </ul>
 
         <MagneticLink
-          href={WHATSAPP_URL}
+          href={BOOK_NOW_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="hidden lg:inline-flex btn-nav"
@@ -141,7 +141,7 @@ export default function Navbar() {
               ))}
               <motion.li variants={getRevealVariantByKey('book-now')} className="pt-2">
                 <a
-                  href={WHATSAPP_URL}
+                  href={BOOK_NOW_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-center btn-nav w-full"
